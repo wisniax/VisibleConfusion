@@ -4,23 +4,25 @@
 	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
 	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-	xmlns:local="clr-namespace:VisibleConfusion"
+	xmlns:local="clr-namespace:VisibleConfusion.MVVM.View"
 	mc:Ignorable="d"
 	Title="MainWindow"
 	Height="450"
+	MinWidth="400"
+	MinHeight="100"
 	Width="800">
 	<Grid
 		Background="#212121">
-		<Label
-			Background="Aqua"
-			BorderThickness="4"
-			BorderBrush="#888"
-			Margin="35"
-			FontSize="45"
-			HorizontalAlignment="Center"
-			VerticalAlignment="Center"
-			Padding="20,10,20,10">
-			Jest Super
-		</Label>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition
+				Width="2*"/>
+			<ColumnDefinition
+				Width="100" />
+			<ColumnDefinition
+				Width="2*" />
+		</Grid.ColumnDefinitions>
+		<local:PictureView />
+		<local:PictureView
+			Grid.Column="2"/>
 	</Grid>
 </Window>
