@@ -9,6 +9,7 @@
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="Theme/Button.xaml" />
+                <ResourceDictionary Source="/Image.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
 

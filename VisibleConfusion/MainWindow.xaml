@@ -1,28 +1,27 @@
-﻿<Window
-	x:Class="VisibleConfusion.MainWindow"
-	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-	xmlns:local="clr-namespace:VisibleConfusion.MVVM.View"
-	mc:Ignorable="d"
-	Title="MainWindow"
-	Height="450"
-	MinWidth="400"
-	MinHeight="100"
-	Width="800">
-	<Grid
-		Background="#212121">
-		<Grid.ColumnDefinitions>
-			<ColumnDefinition
-				Width="2*"/>
-			<ColumnDefinition
-				Width="100" />
-			<ColumnDefinition
-				Width="2*" />
-		</Grid.ColumnDefinitions>
-		<local:PictureView />
-		<local:PictureView
-			Grid.Column="2"/>
-	</Grid>
+﻿<Window x:Class="VisibleConfusion.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:VisibleConfusion.MVVM.View"
+        mc:Ignorable="d"
+        Title="MainWindow"
+        Height="450"
+        MinWidth="400"
+        MinHeight="100"
+        Width="800">
+    <Grid Background="#0c0c0c">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*" />
+            <ColumnDefinition Width="100" />
+            <ColumnDefinition Width="2*" />
+        </Grid.ColumnDefinitions>
+        <local:PictureView />
+        <local:PictureView Grid.Column="2" />
+        <Image HorizontalAlignment="Left"
+               Height="209"
+               Margin="39,117,0,0"
+               VerticalAlignment="Top"
+               Width="254" />
+    </Grid>
 </Window>
