@@ -1,0 +1,26 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:converters="clr-namespace:VisibleConfusion.Converters">
+    <converters:ColorConverter x:Key="ColorConverter" />
+
+    <SolidColorBrush x:Key="AccentColor"
+                     Color="{Binding Source={x:Static SystemParameters.WindowGlassColor},Converter={StaticResource ColorConverter}}" />
+    <SolidColorBrush x:Key="BackgroundColor"
+                     Color="#0C0C0C" />
+    <SolidColorBrush x:Key="HoverColor"
+                     Color="#FF0000" />
+    <SolidColorBrush x:Key="ElementColor"
+                     Color="#000" />
+    <SolidColorBrush x:Key="ForegroundColor"
+                     Color="#282828" />
+    <SolidColorBrush x:Key="TextColor"
+                     Color="#FFF" />
+    <SolidColorBrush x:Key="DisabledColor"
+                     Color="#FF00FF" />
+    <DropShadowEffect x:Key="dropShadow"
+                      Color="#000"
+                      Direction="270"
+                      ShadowDepth="5"
+                      BlurRadius="4"
+                      Opacity="0.25" />
+</ResourceDictionary>

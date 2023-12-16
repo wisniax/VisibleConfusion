@@ -3,13 +3,14 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:VisibleConfusion"
              xmlns:view="clr-namespace:VisibleConfusion.MVVM.View"
-	StartupUri="MainWindow.xaml">
+             StartupUri="MainWindow.xaml">
     <Application.Resources>
-
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Theme/Resources.xaml" />
                 <ResourceDictionary Source="Theme/Button.xaml" />
-                <ResourceDictionary Source="/Image.xaml" />
+                <ResourceDictionary Source="Theme/Image.xaml" />
+                <ResourceDictionary Source="Theme/CheckBox.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
 

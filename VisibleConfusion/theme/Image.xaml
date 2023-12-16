@@ -1,5 +1,8 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-    
-    <Style TargetType="{x:Type Image}"/>
+
+    <Style TargetType="{x:Type Image}">
+        <Setter Property="Effect"
+                Value="{StaticResource dropShadow}" />
+    </Style>
 </ResourceDictionary>

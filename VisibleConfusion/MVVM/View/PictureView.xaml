@@ -8,7 +8,7 @@
 			 d:DesignHeight="450" d:DesignWidth="800">
 	<DockPanel>
 		<local:SelectBar DockPanel.Dock="Top"/>
-		<Image
-			DockPanel.Dock="Top" />
-	</DockPanel>
+        <Image Width="360"
+               Height="240" />
+    </DockPanel>
 </UserControl>
