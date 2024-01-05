@@ -7,10 +7,12 @@
              d:DesignWidth="600"
              mc:Ignorable="d">
 
-    <WrapPanel Margin="1">
+    <WrapPanel Margin="1"
+               VerticalAlignment="Center"
+               HorizontalAlignment="Center">
         <Button>Grafika</Button>
-        <Button>Kamera</Button>
         <Button>Z pliku</Button>
-        <CheckBox>Checkboksik</CheckBox>
+        <Button>Kamera</Button>
+        <!--<CheckBox IsChecked="False">Checkboksik</CheckBox>-->
     </WrapPanel>
 </UserControl>
