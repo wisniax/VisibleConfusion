@@ -6,8 +6,8 @@
              xmlns:local="clr-namespace:VisibleConfusion.MVVM.View"
              xmlns:viewModel="clr-namespace:VisibleConfusion.MVVM.ViewModel"
              mc:Ignorable="d"
-             d:DesignHeight="400"
-             d:DesignWidth="320">
+             d:DesignWidth="320"
+             Height="444">
     <UserControl.DataContext>
         <viewModel:PictureViewModel />
     </UserControl.DataContext>
@@ -73,10 +73,31 @@
                 <TextBlock Grid.Column="4"
                            Foreground="White">B</TextBlock>
             </Grid>
-            <Image Source="{Binding PictureBitmapSource}"
-                   Width="300"
-                   Height="200"
-                   Grid.Row="1" />
+            <Border Grid.Row="1"
+                    BorderThickness="2"
+                    Width="Auto"
+                    Height="Auto"
+                    BorderBrush="{StaticResource ForegroundColor}"
+                    CornerRadius="2"
+                    Margin="4"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Effect="{StaticResource dropShadow}">
+                <Grid>
+                    <Border Name="mask"
+                            Background="{StaticResource ForegroundColor}"
+                            CornerRadius="1" />
+                    <StackPanel>
+                        <StackPanel.OpacityMask>
+                            <VisualBrush Visual="{Binding ElementName=mask}" />
+                        </StackPanel.OpacityMask>
+                        <Image Source="{Binding PictureBitmapSource}"
+                               Stretch="Fill"
+                               Width="300"
+                               Height="200" />
+                    </StackPanel>
+                </Grid>
+            </Border>
             <Grid Grid.Row="2"
                   HorizontalAlignment="Center">
                 <Grid.ColumnDefinitions>
@@ -95,11 +116,31 @@
                 </Button>
             </Grid>
 
-            <Image Width="300"
-                   Height="100"
-                   Grid.Row="3"
-                   Source="{Binding GraphBitmapSource}"
-                   Stretch="Fill" />
+            <Border Grid.Row="3"
+                    BorderThickness="2"
+                    Width="Auto"
+                    Height="Auto"
+                    BorderBrush="{StaticResource ForegroundColor}"
+                    CornerRadius="2"
+                    Margin="4"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Effect="{StaticResource dropShadow}">
+                <Grid>
+                    <Border Name="mask2"
+                            Background="{StaticResource ForegroundColor}"
+                            CornerRadius="1" />
+                    <StackPanel>
+                        <StackPanel.OpacityMask>
+                            <VisualBrush Visual="{Binding ElementName=mask2}" />
+                        </StackPanel.OpacityMask>
+                        <Image Source="{Binding GraphBitmapSource}"
+                               Stretch="Fill"
+                               Width="300"
+                               Height="100" />
+                    </StackPanel>
+                </Grid>
+            </Border>
         </Grid>
 
     </DockPanel>
