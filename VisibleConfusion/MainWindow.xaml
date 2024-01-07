@@ -6,17 +6,18 @@
         xmlns:local="clr-namespace:VisibleConfusion.MVVM.View"
         mc:Ignorable="d"
         Title="MainWindow"
-        Height="450"
+        Height="500"
         MinWidth="400"
         MinHeight="100"
         Width="900">
     <Grid Background="#0c0c0c">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="2*" />
-            <ColumnDefinition Width="100" />
-            <ColumnDefinition Width="2*" />
+            <ColumnDefinition Width="3*" />
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="3*" />
         </Grid.ColumnDefinitions>
         <local:PictureView />
+        <local:ThingsBetwixt Grid.Column="1"/>
         <local:PictureView Grid.Column="2" />
     </Grid>
 </Window>

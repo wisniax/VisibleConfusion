@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:VisibleConfusion.MVVM.View"
              xmlns:viewModel="clr-namespace:VisibleConfusion.MVVM.ViewModel"
              mc:Ignorable="d"
-             d:DesignWidth="320"
+             d:DesignWidth="310"
              Height="444">
     <UserControl.DataContext>
         <viewModel:PictureViewModel />

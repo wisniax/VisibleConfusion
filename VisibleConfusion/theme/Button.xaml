@@ -34,11 +34,11 @@
         <Setter Property="VerticalContentAlignment"
                 Value="Center" />
         <Setter Property="Padding"
-                Value="24,8" />
+                Value="1,1" />
         <Setter Property="Margin"
-                Value="1" />
+                Value="3" />
         <Setter Property="Width"
-                Value="100" />
+                Value="80" />
         <Setter Property="Height"
                 Value="32" />
         <Setter Property="Template">
