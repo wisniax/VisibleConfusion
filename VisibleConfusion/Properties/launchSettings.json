@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "VisibleConfusion": {
+      "commandName": "Project",
+      "hotReloadEnabled": false
+    }
+  }
+}

@@ -8,13 +8,13 @@ using System.Threading.Tasks;
 
 namespace VisibleConfusion.Core
 {
-	internal class ObservableObject
+	internal class ObservableObject : INotifyPropertyChanged
 	{
 		public event PropertyChangedEventHandler? PropertyChanged;
 
 		protected void OnPropertyChanged([CallerMemberName] string? name = null)
 		{
-			PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));  
+			PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
 		}
 	}
 }
