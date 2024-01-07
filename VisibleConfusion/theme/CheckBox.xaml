@@ -63,7 +63,7 @@
         <Setter Property="Background"
                 Value="{StaticResource AccentColor}" />
         <Setter Property="Foreground"
-                Value="{StaticResource TextColor}" />
+                Value="{StaticResource TextColor_1}" />
         <Setter Property="Template">
 
             <Setter.Value>
@@ -179,10 +179,10 @@
                                     Value="0" />
                             <Setter Property="Fill"
                                     TargetName="optionMark"
-                                    Value="{StaticResource TextColor}" />
+                                    Value="{StaticResource TextColor_1}" />
                             <Setter Property="Fill"
                                     TargetName="indeterminateMark"
-                                    Value="{StaticResource TextColor}" />
+                                    Value="{StaticResource TextColor_1}" />
                         </Trigger>
                         <Trigger Property="IsChecked"
                                  Value="False">
@@ -197,7 +197,7 @@
                                     Value="{StaticResource ForegroundColor}" />
                             <Setter Property="BorderBrush"
                                     TargetName="checkBoxBorder"
-                                    Value="{StaticResource TextColor}" />
+                                    Value="{StaticResource TextColor_1}" />
                             <Setter Property="BorderThickness"
                                     TargetName="checkBoxBorder"
                                     Value="1" />
@@ -212,10 +212,10 @@
                                     Value="0" />
                             <Setter Property="Fill"
                                     TargetName="optionMark"
-                                    Value="{StaticResource TextColor}" />
+                                    Value="{StaticResource TextColor_1}" />
                             <Setter Property="Fill"
                                     TargetName="indeterminateMark"
-                                    Value="{StaticResource TextColor}" />
+                                    Value="{StaticResource TextColor_1}" />
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
