@@ -13,7 +13,8 @@
                 <ResourceDictionary Source="Theme/CheckBox.xaml" />
                 <ResourceDictionary Source="Theme/TextBox.xaml" />
                 <ResourceDictionary Source="Theme/TextBlock.xaml" />
-                <ResourceDictionary Source="Theme/arrowrightsolid.xaml" />
+                <ResourceDictionary Source="Theme/Icons/arrowrightsolid.xaml" />
+                <ResourceDictionary Source="Theme/Icons/arrowleftsolid.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
 
