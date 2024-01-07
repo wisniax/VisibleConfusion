@@ -82,7 +82,7 @@ namespace VisibleConfusion.MVVM.ViewModel
 
 		private void FromCamera(object obj)
 		{
-			PictureBitmapSource = new BitmapImage(new Uri("https://www.semtec.pl/wp-content/uploads/2016/09/kot.png"));
+			PictureBitmapSource = new BitmapImage(new Uri("http://www.quickmeme.com/img/8e/8ebf027f8f79f4b1b959341cb0a6f91bd28f6ec612dbc32c032712f8a6834a24.jpg"));
 		}
 	}
 }

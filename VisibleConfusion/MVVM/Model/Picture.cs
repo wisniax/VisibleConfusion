@@ -1,4 +1,5 @@
 ﻿using System;
+using Windows.Foundation;
 using Emgu.CV;
 using Emgu.CV.Structure;
 using Color = System.Drawing.Color;
@@ -7,6 +8,9 @@ namespace VisibleConfusion.MVVM.Model
 {
 	internal class Picture
 	{
+		public Size? FrameSize { get; set; }
+		public Size? GraphSize { get; set; }
+
 		public delegate void FrameChangedEventHandler(Image<Rgb, byte>? sender);
 		public event FrameChangedEventHandler? FrameChanged;
 		public event FrameChangedEventHandler? GraphChanged;
