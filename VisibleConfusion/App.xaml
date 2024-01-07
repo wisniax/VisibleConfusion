@@ -11,6 +11,8 @@
                 <ResourceDictionary Source="Theme/Button.xaml" />
                 <ResourceDictionary Source="Theme/Image.xaml" />
                 <ResourceDictionary Source="Theme/CheckBox.xaml" />
+                <ResourceDictionary Source="Theme/TextBox.xaml" />
+                <ResourceDictionary Source="Theme/TextBlock.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
 
