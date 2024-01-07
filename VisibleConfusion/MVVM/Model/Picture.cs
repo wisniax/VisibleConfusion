@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace VisibleConfusion.MVVM.Model
 {
-    class CameraCapture
+    class Picture
     {
+		
     }
 }
