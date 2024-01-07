@@ -13,8 +13,19 @@
 		<viewModel:PictureViewModel />
 	</UserControl.DataContext>
 	<DockPanel>
-		<local:SelectBar
-			DockPanel.Dock="Top" />
+
+		<WrapPanel
+			DockPanel.Dock="Top"
+			Margin="1"
+			VerticalAlignment="Center"
+			HorizontalAlignment="Center">
+			<Button>
+				Grafika
+			</Button>
+			<Button>Z pliku</Button>
+			<Button>Kamera</Button>
+		</WrapPanel>
+
 		<Grid
 			DockPanel.Dock="Bottom"
 			HorizontalAlignment="Center">
@@ -65,5 +76,6 @@
 				Height="100"
 				Grid.Row="3" />
 		</Grid>
+
 	</DockPanel>
 </UserControl>
