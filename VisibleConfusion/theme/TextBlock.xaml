@@ -3,6 +3,8 @@
     
     <Style TargetType="{x:Type TextBlock}">
         <Setter Property="TextWrapping" Value="NoWrap"/>
+        <Setter Property="FontWeight"
+                Value="Bold" />
         <Setter Property="TextTrimming"
                 Value="None" />
         <Setter Property="HorizontalAlignment"

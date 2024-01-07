@@ -16,7 +16,7 @@
     </Style>
     <Style TargetType="{x:Type Button}">
         <Setter Property="FontWeight"
-                Value="Medium" />
+                Value="Bold" />
         <Setter Property="Effect"
                 Value="{StaticResource dropShadow}" />
         <Setter Property="FocusVisualStyle"
