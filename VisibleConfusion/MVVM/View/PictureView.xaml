@@ -32,6 +32,7 @@
 			</Button>
 
 			<Button
+				IsEnabled="{Binding CameraButtonEnabled}"
 				Command="{Binding FromCameraCommand}">
 				Kamera
 			</Button>

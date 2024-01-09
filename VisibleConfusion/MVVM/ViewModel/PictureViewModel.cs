@@ -92,12 +92,26 @@ namespace VisibleConfusion.MVVM.ViewModel
 			}
 		}
 
+		private bool _cameraButtonEnabled;
+
+		public bool CameraButtonEnabled
+		{
+			get => _cameraButtonEnabled;
+			set
+			{
+				_cameraButtonEnabled = value;
+				OnPropertyChanged();
+			}
+		}
+
+
 
 		public PictureViewModel()
 		{
 			_pictureHandler = new PictureHandler();
-			//PictureBitmapSource = _pictureHandler.CurrentFrame?.Convert<Bgr, byte>().ToBitmapSource();
+			// PictureBitmapSource = _pictureHandler.CurrentFrame?.Convert<Bgr, byte>().ToBitmapSource();
 			_pictureHandler.FrameChanged += (sender) => PictureBitmapSource = sender?.Convert<Bgr, byte>().ToBitmapSource();
+			// _pictureHandler.FrameChanged += (sender) => PictureBitmapSource = sender?.Convert<Bgr, byte>().ToBitmapSource();
 			_pictureHandler.FrameChanged += (_) => MaxPixelPos = _pictureHandler.GetFrameRelativePos(new Point(1, 1));
 			_pictureHandler.FrameChanged += (_) => OnSelectedPixelPosChanged();
 			_pictureHandler.GraphChanged += (sender) => GraphBitmapSource = sender?.Convert<Bgr, byte>().ToBitmapSource();
@@ -116,6 +130,8 @@ namespace VisibleConfusion.MVVM.ViewModel
 			DoGraphCommand = new RelayCommand((o) => throw new NotImplementedException());
 			OnMouseLeftButtonDownOnPictureCommand = new RelayCommand(MouseLeftButtonDownOnPicture);
 			OnNumericUpDownPixelPosChangedCommand = new RelayCommand((o) => OnSelectedPixelPosChanged());
+
+			CameraButtonEnabled = true;
 		}
 
 		private void MouseLeftButtonDownOnPicture(object obj)
@@ -140,9 +156,12 @@ namespace VisibleConfusion.MVVM.ViewModel
 			_pictureHandler.GetImageFromFile(new Uri(openFileDialog.FileName));
 		}
 
-		private void FromCamera(object obj)
+		private async void FromCamera(object obj)
 		{
-			PictureBitmapSource = new BitmapImage(new Uri("http://www.quickmeme.com/img/8e/8ebf027f8f79f4b1b959341cb0a6f91bd28f6ec612dbc32c032712f8a6834a24.jpg"));
+			CameraButtonEnabled = false;
+			if (!(await _pictureHandler.ToggleCameraFeedAsync()))
+				PictureBitmapSource = new BitmapImage(new Uri("http://www.quickmeme.com/img/8e/8ebf027f8f79f4b1b959341cb0a6f91bd28f6ec612dbc32c032712f8a6834a24.jpg"));
+			CameraButtonEnabled = true;
 		}
 
 		private void OnSelectedPixelPosChanged()

@@ -1,9 +1,13 @@
 ﻿using System;
-using Windows.Foundation;
+using System.Threading.Tasks;
+using System.Windows;
 using Windows.Graphics;
+using ABI.Windows.Media.Audio;
 using Emgu.CV;
 using Emgu.CV.Structure;
 using Xceed.Wpf.Toolkit.Core.Converters;
+using Point = Windows.Foundation.Point;
+using Size = Windows.Foundation.Size;
 
 namespace VisibleConfusion.MVVM.Model
 {
@@ -66,9 +70,12 @@ namespace VisibleConfusion.MVVM.Model
 			{
 				_currentFrame?.Dispose();
 				_currentFrame = value;
+				LastFrameTimeStamp = DateTime.Now;
 				OnFrameChanged();
 			}
 		}
+		public DateTime LastFrameTimeStamp { get; private set; }
+
 
 		private Image<Rgb, byte>? _currentGraph;
 
@@ -82,6 +89,9 @@ namespace VisibleConfusion.MVVM.Model
 				OnGraphChanged();
 			}
 		}
+
+		VideoCapture? _capture;
+		public bool IsCaptureRunning { get; private set; }
 
 		public PictureHandler()
 		{
@@ -112,6 +122,45 @@ namespace VisibleConfusion.MVVM.Model
 		public void GetImageFromFile(Uri uri)
 		{
 			CurrentFrame = new Image<Rgb, byte>(uri.AbsolutePath);
+		}
+
+		public Task<bool> ToggleCameraFeedAsync()
+		{
+			if (_capture == null)
+				return Task.Run(CreateCapture);
+
+			if (LastFrameTimeStamp > DateTime.Now - TimeSpan.FromSeconds(0.5) & IsCaptureRunning)
+			{
+				_capture.Stop();
+				IsCaptureRunning = false;
+			}
+			else if (!IsCaptureRunning)
+			{
+				_capture.Start();
+				IsCaptureRunning = true;
+			}
+			else
+			{
+				return Task.Run(CreateCapture);
+			}
+
+			return Task.Run(() => true);
+		}
+
+		private bool CreateCapture()
+		{
+			_capture?.Dispose();
+			_capture = new VideoCapture();
+			if (!_capture.IsOpened) return _capture.IsOpened;
+			_capture.ImageGrabbed += (sender, args) =>
+			{
+				var frame = new Image<Bgr, byte>(_capture.Width, _capture.Height);
+				_capture?.Retrieve(frame);
+				Application.Current?.Dispatcher.Invoke(() => CurrentFrame = frame.Convert<Rgb, byte>());
+			};
+			_capture.Start();
+			IsCaptureRunning = true;
+			return true;
 		}
 
 		public Point2D GetFrameRelativePos(Point relPoint)
