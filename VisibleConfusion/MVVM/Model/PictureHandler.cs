@@ -111,12 +111,42 @@ namespace VisibleConfusion.MVVM.Model
 
 		private void CreateGraphFromFrame()
 		{
-			CurrentGraph = new Image<Rgb, byte>(100, 100, new Rgb(System.Drawing.Color.Black));
+			var tmp = new Image<Rgb, byte>(CurrentFrame?.Width ?? 1, 256, new Rgb(System.Drawing.Color.Black));
+			var frameY = CurrentFrame?.Height / 2 ?? 0;
+			int lastRVal = 0, lastGVal = 0, lastBVal = 0;
+			for (var x = 0; x < CurrentFrame?.Width; x++)
+			{
+				var color = GetPixelFromPos(new Point2D(x, frameY));
+				var rVal = 255 - color.R;
+				var gVal = 255 - color.G;
+				var bVal = 255 - color.B;
+
+				FillLineWithColor(ref tmp, x, rVal, lastRVal, 0, System.Drawing.Color.Red.R);
+				FillLineWithColor(ref tmp, x, gVal, lastGVal, 1, System.Drawing.Color.Green.G);
+				FillLineWithColor(ref tmp, x, bVal, lastBVal, 2, System.Drawing.Color.Blue.B);
+
+				lastRVal = rVal;
+				lastGVal = gVal;
+				lastBVal = bVal;
+			}
+
+			CurrentGraph = tmp;
+		}
+
+		private void FillLineWithColor(ref Image<Rgb, byte> image, int x, int yBegin, int yEnd, int z, byte val)
+		{
+			if (yBegin > yEnd)
+				(yBegin, yEnd) = (yEnd, yBegin);
+
+			for (var y = yBegin; y < yEnd; y++)
+			{
+				image.Data[y, x, z] = val;
+			}
 		}
 
 		public void ClearFrame()
 		{
-			CurrentFrame = new Image<Rgb, byte>(1, 1, new Rgb(System.Drawing.Color.Black));
+			CurrentFrame = new Image<Rgb, byte>(1024, 768, new Rgb(System.Drawing.Color.Black));
 		}
 
 		public void GetImageFromFile(Uri uri)
@@ -152,15 +182,18 @@ namespace VisibleConfusion.MVVM.Model
 			_capture?.Dispose();
 			_capture = new VideoCapture();
 			if (!_capture.IsOpened) return _capture.IsOpened;
-			_capture.ImageGrabbed += (sender, args) =>
-			{
-				var frame = new Image<Bgr, byte>(_capture.Width, _capture.Height);
-				_capture?.Retrieve(frame);
-				Application.Current?.Dispatcher.Invoke(() => CurrentFrame = frame.Convert<Rgb, byte>());
-			};
+			_capture.ImageGrabbed += OnImageGrabbed;
 			_capture.Start();
 			IsCaptureRunning = true;
 			return true;
+		}
+
+		private void OnImageGrabbed(object? sender, EventArgs args)
+		{
+			if (_capture == null) return;
+			var frame = new Image<Bgr, byte>(_capture.Width, _capture.Height);
+			_capture?.Retrieve(frame);
+			Application.Current?.Dispatcher.Invoke(() => CurrentFrame = frame.Convert<Rgb, byte>());
 		}
 
 		public Point2D GetFrameRelativePos(Point relPoint)
