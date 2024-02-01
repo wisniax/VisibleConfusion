@@ -8,12 +8,26 @@
 	xmlns:viewModel="clr-namespace:VisibleConfusion.MVVM.ViewModel"
 	xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
 	xmlns:behaviors="http://schemas.microsoft.com/xaml/behaviors"
+	xmlns:themes="clr-namespace:Xceed.Wpf.Toolkit.Themes;assembly=Xceed.Wpf.Toolkit.NET5"
 	mc:Ignorable="d"
 	d:DesignWidth="310"
 	Height="444">
 	<UserControl.DataContext>
 		<viewModel:PictureViewModel />
 	</UserControl.DataContext>
+	<UserControl.Resources>
+		<SolidColorBrush
+			x:Key="{ComponentResourceKey TypeInTargetAssembly={x:Type themes:ResourceKeys}, ResourceId=GlyphNormalForegroundKey}"
+			Color="#FF00FF00" />
+
+		<Style
+			x:Key="{ComponentResourceKey TypeInTargetAssembly={x:Type themes:ResourceKeys}, ResourceId=SpinnerButtonStyleKey}"
+			TargetType="RepeatButton">
+			<Setter
+				Property="Background"
+				Value="Orange" />
+		</Style>
+	</UserControl.Resources>
 	<DockPanel>
 
 		<WrapPanel
