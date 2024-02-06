@@ -15,6 +15,7 @@
                 <ResourceDictionary Source="Theme/TextBlock.xaml" />
                 <ResourceDictionary Source="Theme/Icons/arrowrightsolid.xaml" />
                 <ResourceDictionary Source="Theme/Icons/arrowleftsolid.xaml" />
+                <ResourceDictionary Source="Theme/IntegerUpDown.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
 
