@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Threading.Tasks;
 using System.Windows;
 using Windows.Graphics;
@@ -113,17 +114,20 @@ namespace VisibleConfusion.MVVM.Model
 		{
 			var tmp = new Image<Rgb, byte>(CurrentFrame?.Width ?? 1, 256, new Rgb(System.Drawing.Color.Black));
 			var frameY = CurrentFrame?.Height / 2 ?? 0;
-			int lastRVal = 0, lastGVal = 0, lastBVal = 0;
+
+			var color = GetPixelFromPos(new Point2D(0, frameY));
+			int lastRVal = 255 - color.R, lastGVal = 255 - color.G, lastBVal = 255 - color.B;
+
 			for (var x = 0; x < CurrentFrame?.Width; x++)
 			{
-				var color = GetPixelFromPos(new Point2D(x, frameY));
+				color = GetPixelFromPos(new Point2D(x, frameY));
 				var rVal = 255 - color.R;
 				var gVal = 255 - color.G;
 				var bVal = 255 - color.B;
 
-				FillLineWithColor(ref tmp, x, rVal, lastRVal, 0, System.Drawing.Color.Red.R);
-				FillLineWithColor(ref tmp, x, gVal, lastGVal, 1, System.Drawing.Color.Green.G);
-				FillLineWithColor(ref tmp, x, bVal, lastBVal, 2, System.Drawing.Color.Blue.B);
+				FillLineWithColor(ref tmp, x, rVal, lastRVal + 1, 0, System.Drawing.Color.Red.R);
+				FillLineWithColor(ref tmp, x, gVal, lastGVal + 1, 1, System.Drawing.Color.Lime.G);
+				FillLineWithColor(ref tmp, x, bVal, lastBVal + 1, 2, System.Drawing.Color.Blue.B);
 
 				lastRVal = rVal;
 				lastGVal = gVal;
@@ -138,7 +142,7 @@ namespace VisibleConfusion.MVVM.Model
 			if (yBegin > yEnd)
 				(yBegin, yEnd) = (yEnd, yBegin);
 
-			for (var y = yBegin; y < yEnd; y++)
+			for (var y = yBegin; y <= yEnd && y < image.Height; y++)
 			{
 				image.Data[y, x, z] = val;
 			}
@@ -151,7 +155,20 @@ namespace VisibleConfusion.MVVM.Model
 
 		public void GetImageFromFile(Uri uri)
 		{
-			CurrentFrame = new Image<Rgb, byte>(uri.AbsolutePath);
+			if (!File.Exists(uri.AbsolutePath))
+			{
+				MessageBox.Show("File does not exist in this context.");
+				return;
+			}
+
+			try
+			{
+				CurrentFrame = new Image<Rgb, byte>(uri.AbsolutePath);
+			}
+			catch (Exception e)
+			{
+				MessageBox.Show(e.Message);
+			}
 		}
 
 		public Task<bool> ToggleCameraFeedAsync()
