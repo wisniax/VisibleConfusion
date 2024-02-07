@@ -7,8 +7,8 @@
              xmlns:viewModel="clr-namespace:VisibleConfusion.MVVM.ViewModel"
              mc:Ignorable="d"
              d:DesignWidth="120"
-             Height="500">
-    <DockPanel ClipToBounds="True">
+             Height="auto">
+    <DockPanel>
         <WrapPanel DockPanel.Dock="Top"
                    Margin="1"
                    VerticalAlignment="Center"

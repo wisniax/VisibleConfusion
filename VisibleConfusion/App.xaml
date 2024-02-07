@@ -15,8 +15,12 @@
                 <ResourceDictionary Source="Theme/TextBlock.xaml" />
                 <ResourceDictionary Source="Theme/Icons/arrowrightsolid.xaml" />
                 <ResourceDictionary Source="Theme/Icons/arrowleftsolid.xaml" />
+                <ResourceDictionary Source="Theme/Icons/close.xaml" />
+                <ResourceDictionary Source="Theme/Icons/maximize.xaml" />
+                <ResourceDictionary Source="Theme/Icons/minimize.xaml" />
                 <ResourceDictionary Source="Theme/IntegerUpDown.xaml" />
                 <ResourceDictionary Source="Theme/SideBarRadioButton.xaml" />
+                <ResourceDictionary Source="Theme/Icons/restore.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
 
