@@ -1,0 +1,51 @@
+﻿<UserControl x:Class="VisibleConfusion.MVVM.View.SideBar"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:VisibleConfusion.MVVM.View"
+             xmlns:viewModel="clr-namespace:VisibleConfusion.MVVM.ViewModel"
+             mc:Ignorable="d"
+             d:DesignWidth="120"
+             Height="500">
+    <DockPanel ClipToBounds="True">
+        <WrapPanel DockPanel.Dock="Top"
+                   Margin="1"
+                   VerticalAlignment="Center"
+                   HorizontalAlignment="Center" />
+        <Grid VerticalAlignment="Top"
+              HorizontalAlignment="Center">
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <RadioButton Style="{DynamicResource SideBarRadioButton}"
+                         Grid.Row="0"
+                         Content="0" />
+            <RadioButton Style="{DynamicResource SideBarRadioButton}"
+                         Grid.Row="1"
+                         IsChecked="True"
+                         Content ="1"/>
+            <RadioButton Style="{DynamicResource SideBarRadioButton}"
+                         Grid.Row="2"
+                         Content="2" />
+            <RadioButton Style="{DynamicResource SideBarRadioButton}"
+                         Grid.Row="3"
+                         Content="3" />
+            <RadioButton Style="{DynamicResource SideBarRadioButton}"
+                         Grid.Row="4"
+                         Content="4" />
+            <RadioButton Style="{DynamicResource SideBarRadioButton}"
+                         Grid.Row="5"
+                         Content="5" />
+            <RadioButton Style="{DynamicResource SideBarRadioButton}"
+                         Grid.Row="6"
+                         Content="6" />
+        </Grid>
+    </DockPanel>
+</UserControl>
