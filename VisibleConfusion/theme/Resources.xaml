@@ -1,27 +1,37 @@
-﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:converters="clr-namespace:VisibleConfusion.Converters">
-    <converters:ColorConverter x:Key="ColorConverter" />
+﻿<ResourceDictionary
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:converters="clr-namespace:VisibleConfusion.Converters">
+	<converters:ColorConverter
+		x:Key="ColorConverter" />
 
-    <SolidColorBrush x:Key="AccentColor"
-                     Color="{Binding Source={x:Static SystemParameters.WindowGlassColor},Converter={StaticResource ColorConverter}}" />
-    <SolidColorBrush x:Key="BackgroundColor"
-                     Color="#0C0C0C" />
-    <SolidColorBrush x:Key="HoverColor"
-                     Color="{Binding Source={x:Static SystemParameters.WindowGlassColor}}" />
-    <SolidColorBrush x:Key="ElementColor"
-                     Color="#000" />
-    <SolidColorBrush x:Key="ForegroundColor"
-                     Color="#282828" />
-    <SolidColorBrush x:Key="TextColor_1"
-                     Color="White" />
-    <SolidColorBrush x:Key="DisabledColor"
-                     Color="#FF00FF" /> <!-- Kuba proszę napisz żeby konwerter też dawał jeszcze jaśniejszy kolor coś w stylu jak teraz dajesz +74 to daj dwa razy tyle -->
-    <DropShadowEffect x:Key="dropShadow"
-                      Color="#000"
-                      Direction="270"
-                      ShadowDepth="5"
-                      BlurRadius="4"
-                      Opacity="0.25" />
+	<SolidColorBrush
+		x:Key="AccentColor"
+		Color="{Binding Source={x:Static SystemParameters.WindowGlassColor}, Converter={StaticResource ColorConverter}}" />
+	<SolidColorBrush
+		x:Key="BackgroundColor"
+		Color="#0C0C0C" />
+	<SolidColorBrush
+		x:Key="HoverColor"
+		Color="{Binding Source={x:Static SystemParameters.WindowGlassColor}}" />
+	<SolidColorBrush
+		x:Key="ElementColor"
+		Color="#000" />
+	<SolidColorBrush
+		x:Key="ForegroundColor"
+		Color="#282828" />
+	<SolidColorBrush
+		x:Key="TextColor_1"
+		Color="White" />
+	<SolidColorBrush
+		x:Key="DisabledColor"
+		Color="{Binding Source={x:Static SystemParameters.WindowGlassColor}, Converter={StaticResource ColorConverter}, ConverterParameter=150}" />
+	<DropShadowEffect
+		x:Key="dropShadow"
+		Color="#000"
+		Direction="270"
+		ShadowDepth="5"
+		BlurRadius="4"
+		Opacity="0.25" />
 
 </ResourceDictionary>

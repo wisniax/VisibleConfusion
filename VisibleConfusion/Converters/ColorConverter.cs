@@ -16,9 +16,14 @@ namespace VisibleConfusion.Converters
 		{
 			if (value is not Color color)
 				throw new ArgumentException("Value must be a color", nameof(value));
-			color.R = (color.R + 74) > Byte.MaxValue ? Byte.MaxValue : (byte)(color.R + 74);
-			color.G = (color.G + 74) > Byte.MaxValue ? Byte.MaxValue : (byte)(color.G + 74);
-			color.B = (color.B + 74) > Byte.MaxValue ? Byte.MaxValue : (byte)(color.B + 74);
+
+			byte offset;
+			if (parameter is not string parameterString || !Byte.TryParse(parameterString, System.Globalization.NumberStyles.Integer, null, out offset))
+				offset = 74;
+
+			color.R = (color.R + offset) > Byte.MaxValue ? Byte.MaxValue : (byte)(color.R + offset);
+			color.G = (color.G + offset) > Byte.MaxValue ? Byte.MaxValue : (byte)(color.G + offset);
+			color.B = (color.B + offset) > Byte.MaxValue ? Byte.MaxValue : (byte)(color.B + offset);
 			return color;
 		}
 
