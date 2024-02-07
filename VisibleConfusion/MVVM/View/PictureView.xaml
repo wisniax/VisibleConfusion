@@ -1,218 +1,283 @@
-﻿<UserControl x:Class="VisibleConfusion.MVVM.View.PictureView"
-             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:local="clr-namespace:VisibleConfusion.MVVM.View"
-             xmlns:viewModel="clr-namespace:VisibleConfusion.MVVM.ViewModel"
-             xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
-             xmlns:behaviors="http://schemas.microsoft.com/xaml/behaviors"
-             xmlns:themes="clr-namespace:Xceed.Wpf.Toolkit.Themes;assembly=Xceed.Wpf.Toolkit.NET5"
-             mc:Ignorable="d"
-             d:DesignWidth="310"
-             d:DesignHeight="460">
-    <UserControl.DataContext>
-        <viewModel:PictureViewModel />
-    </UserControl.DataContext>
-    <DockPanel>
-        <WrapPanel DockPanel.Dock="Top"
-                   Margin="1"
-                   VerticalAlignment="Center"
-                   HorizontalAlignment="Center">
-            <Button Command="{Binding DrawByHandCommand}">
-                Grafika
-            </Button>
+﻿<UserControl
+	x:Class="VisibleConfusion.MVVM.View.PictureView"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	xmlns:local="clr-namespace:VisibleConfusion.MVVM.View"
+	xmlns:viewModel="clr-namespace:VisibleConfusion.MVVM.ViewModel"
+	xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+	xmlns:behaviors="http://schemas.microsoft.com/xaml/behaviors"
+	xmlns:themes="clr-namespace:Xceed.Wpf.Toolkit.Themes;assembly=Xceed.Wpf.Toolkit.NET5"
+	mc:Ignorable="d"
+	d:DesignWidth="310"
+	d:DesignHeight="460">
+	<UserControl.DataContext>
+		<viewModel:PictureViewModel />
+	</UserControl.DataContext>
+	<DockPanel>
+		<WrapPanel
+			DockPanel.Dock="Top"
+			Margin="1"
+			VerticalAlignment="Center"
+			HorizontalAlignment="Center">
+			<Button
+				Command="{Binding DrawByHandCommand}">
+				Grafika
+			</Button>
 
-            <Button Command="{Binding FromFileCommand}">
-                Z pliku
-            </Button>
+			<Button
+				Command="{Binding FromFileCommand}">
+				Z pliku
+			</Button>
 
-            <Button IsEnabled="{Binding CameraButtonEnabled}"
-                    Command="{Binding FromCameraCommand}">
-                Kamera
-            </Button>
-        </WrapPanel>
+			<Button
+				IsEnabled="{Binding CameraButtonEnabled}"
+				Command="{Binding FromCameraCommand}">
+				Kamera
+			</Button>
+		</WrapPanel>
 
-        <Grid DockPanel.Dock="Bottom"
-              HorizontalAlignment="Center">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="0.6*" />
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="0.4*" />
-            </Grid.RowDefinitions>
-            <Grid Grid.Row="0">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="*" />
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition />
-                    <ColumnDefinition />
-                    <ColumnDefinition />
-                    <ColumnDefinition />
-                    <ColumnDefinition />
-                </Grid.ColumnDefinitions>
+		<Grid
+			DockPanel.Dock="Bottom"
+			HorizontalAlignment="Center">
+			<Grid.RowDefinitions>
+				<RowDefinition
+					Height="Auto" />
+				<RowDefinition
+					Height="0.6*" />
+				<RowDefinition
+					Height="Auto" />
+				<RowDefinition
+					Height="0.4*" />
+			</Grid.RowDefinitions>
+			<Grid
+				Grid.Row="0">
+				<Grid.RowDefinitions>
+					<RowDefinition
+						Height="*" />
+					<RowDefinition
+						Height="*" />
+				</Grid.RowDefinitions>
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition />
+					<ColumnDefinition />
+					<ColumnDefinition />
+					<ColumnDefinition />
+					<ColumnDefinition />
+				</Grid.ColumnDefinitions>
 
-                <!--dox: https://github.com/xceedsoftware/wpftoolkit/wiki/IntegerUpDown-->
-                <xctk:IntegerUpDown Value="{Binding SelectedPixelPos.X, Mode=TwoWay}"
-                                    VerticalAlignment="Center"
-                                    HorizontalAlignment="Center"
-                                    Grid.Row="0"
-                                    Grid.Column="1"
-                                    Minimum="0"
-                                    DefaultValue="0"
-                                    Maximum="{Binding MaxPixelPos.X}"
-                                    ClipValueToMinMax="True"
-                                    AllowSpin="True">
-                    <behaviors:Interaction.Triggers>
-                        <behaviors:EventTrigger EventName="ValueChanged">
-                            <behaviors:InvokeCommandAction Command="{Binding OnNumericUpDownPixelPosChangedCommand}"
-                                                           PassEventArgsToCommand="True" />
-                        </behaviors:EventTrigger>
-                    </behaviors:Interaction.Triggers>
-                </xctk:IntegerUpDown>
+				<!--dox: https://github.com/xceedsoftware/wpftoolkit/wiki/IntegerUpDown-->
+				<xctk:IntegerUpDown
+					Value="{Binding SelectedPixelPos.X, Mode=TwoWay}"
+					VerticalAlignment="Center"
+					HorizontalAlignment="Center"
+					Grid.Row="0"
+					Grid.Column="1"
+					Minimum="0"
+					DefaultValue="0"
+					Maximum="{Binding MaxPixelPos.X}"
+					ClipValueToMinMax="True"
+					AllowSpin="True">
+					<behaviors:Interaction.Triggers>
+						<behaviors:EventTrigger
+							EventName="ValueChanged">
+							<behaviors:InvokeCommandAction
+								Command="{Binding OnNumericUpDownPixelPosChangedCommand}"
+								PassEventArgsToCommand="True" />
+						</behaviors:EventTrigger>
+					</behaviors:Interaction.Triggers>
+				</xctk:IntegerUpDown>
 
-                <TextBlock Grid.Column="0"
-                           Foreground="White">X:</TextBlock>
-                <xctk:IntegerUpDown Value="{Binding SelectedPixelPos.Y}"
-                                    VerticalAlignment="Center"
-                                    HorizontalAlignment="Center"
-                                    Grid.Row="1"
-                                    Grid.Column="1"
-                                    Minimum="0"
-                                    DefaultValue="0"
-                                    Maximum="{Binding MaxPixelPos.Y}"
-                                    ClipValueToMinMax="True"
-                                    AllowSpin="True">
-                    <behaviors:Interaction.Triggers>
-                        <behaviors:EventTrigger EventName="ValueChanged">
-                            <behaviors:InvokeCommandAction Command="{Binding OnNumericUpDownPixelPosChangedCommand}"
-                                                           PassEventArgsToCommand="True" />
-                        </behaviors:EventTrigger>
-                    </behaviors:Interaction.Triggers>
-                </xctk:IntegerUpDown>
-                <TextBlock Grid.Column="0"
-                           Grid.Row="1"
-                           Foreground="White">Y:</TextBlock>
-                <xctk:IntegerUpDown Value="{Binding SelectedColor.R}"
-                                    ParsingNumberStyle="HexNumber"
-                                    FormatString="X"
-                                    VerticalAlignment="Center"
-                                    HorizontalAlignment="Center"
-                                    Grid.Row="1"
-                                    Grid.Column="2"
-                                    Minimum="0"
-                                    DefaultValue="0"
-                                    ClipValueToMinMax="True"
-                                    AllowSpin="True"
-                                    Maximum="255" />
-                <TextBlock Grid.Column="2"
-                           Foreground="White">R</TextBlock>
-                <xctk:IntegerUpDown Value="{Binding SelectedColor.G}"
-                                    ParsingNumberStyle="HexNumber"
-                                    FormatString="X"
-                                    VerticalAlignment="Center"
-                                    HorizontalAlignment="Center"
-                                    Grid.Row="1"
-                                    Grid.Column="3"
-                                    Minimum="0"
-                                    DefaultValue="0"
-                                    ClipValueToMinMax="True"
-                                    AllowSpin="True"
-                                    Maximum="255" />
-                <TextBlock Grid.Column="3"
-                           Foreground="White">G</TextBlock>
-                <xctk:IntegerUpDown Value="{Binding SelectedColor.B}"
-                                    ParsingNumberStyle="HexNumber"
-                                    FormatString="X"
-                                    VerticalAlignment="Center"
-                                    HorizontalAlignment="Center"
-                                    Grid.Row="1"
-                                    Grid.Column="4"
-                                    Minimum="0"
-                                    DefaultValue="0"
-                                    ClipValueToMinMax="True"
-                                    AllowSpin="True"
-                                    Maximum="255" />
-                <TextBlock Grid.Column="4"
-                           Foreground="White">B</TextBlock>
-            </Grid>
-            <Border Grid.Row="1"
-                    BorderThickness="2"
-                    Width="Auto"
-                    Height="Auto"
-                    BorderBrush="{StaticResource ForegroundColor}"
-                    CornerRadius="2"
-                    Margin="4"
-                    HorizontalAlignment="Center"
-                    VerticalAlignment="Center"
-                    Effect="{StaticResource dropShadow}">
-                <Grid>
-                    <Border Name="mask"
-                            Background="{StaticResource ForegroundColor}"
-                            CornerRadius="1" />
+				<TextBlock
+					Grid.Column="0"
+					Foreground="White">X:</TextBlock>
+				<xctk:IntegerUpDown
+					Value="{Binding SelectedPixelPos.Y}"
+					VerticalAlignment="Center"
+					HorizontalAlignment="Center"
+					Grid.Row="1"
+					Grid.Column="1"
+					Minimum="0"
+					DefaultValue="0"
+					Maximum="{Binding MaxPixelPos.Y}"
+					ClipValueToMinMax="True"
+					AllowSpin="True">
+					<behaviors:Interaction.Triggers>
+						<behaviors:EventTrigger
+							EventName="ValueChanged">
+							<behaviors:InvokeCommandAction
+								Command="{Binding OnNumericUpDownPixelPosChangedCommand}"
+								PassEventArgsToCommand="True" />
+						</behaviors:EventTrigger>
+					</behaviors:Interaction.Triggers>
+				</xctk:IntegerUpDown>
+				<TextBlock
+					Grid.Column="0"
+					Grid.Row="1"
+					Foreground="White">Y:</TextBlock>
+				<xctk:IntegerUpDown
+					Value="{Binding SelectedColor.R}"
+					ParsingNumberStyle="HexNumber"
+					FormatString="X"
+					VerticalAlignment="Center"
+					HorizontalAlignment="Center"
+					Grid.Row="1"
+					Grid.Column="2"
+					Minimum="0"
+					DefaultValue="0"
+					ClipValueToMinMax="True"
+					AllowSpin="True"
+					Maximum="255" />
+				<TextBlock
+					Grid.Column="2"
+					Foreground="White">R</TextBlock>
+				<xctk:IntegerUpDown
+					Value="{Binding SelectedColor.G}"
+					ParsingNumberStyle="HexNumber"
+					FormatString="X"
+					VerticalAlignment="Center"
+					HorizontalAlignment="Center"
+					Grid.Row="1"
+					Grid.Column="3"
+					Minimum="0"
+					DefaultValue="0"
+					ClipValueToMinMax="True"
+					AllowSpin="True"
+					Maximum="255" />
+				<TextBlock
+					Grid.Column="3"
+					Foreground="White">G</TextBlock>
+				<xctk:IntegerUpDown
+					Value="{Binding SelectedColor.B}"
+					ParsingNumberStyle="HexNumber"
+					FormatString="X"
+					VerticalAlignment="Center"
+					HorizontalAlignment="Center"
+					Grid.Row="1"
+					Grid.Column="4"
+					Minimum="0"
+					DefaultValue="0"
+					ClipValueToMinMax="True"
+					AllowSpin="True"
+					Maximum="255" />
+				<TextBlock
+					Grid.Column="4"
+					Foreground="White">B</TextBlock>
+			</Grid>
+			<Border
+				Grid.Row="1"
+				BorderThickness="2"
+				Width="Auto"
+				Height="Auto"
+				BorderBrush="{StaticResource ForegroundColor}"
+				CornerRadius="2"
+				Margin="4"
+				HorizontalAlignment="Center"
+				VerticalAlignment="Center"
+				Effect="{StaticResource dropShadow}">
+				<Grid>
+					<Border
+						Name="mask"
+						Background="{StaticResource ForegroundColor}"
+						CornerRadius="1" />
 					<DockPanel>
 						<DockPanel.OpacityMask>
-                            <VisualBrush Visual="{Binding ElementName=mask}" />
-                        </DockPanel.OpacityMask>
-                        <Image Source="{Binding PictureBitmapSource}"
-                               Stretch="Fill"
-                               Width="Auto"
-                               Height="Auto">
-                            <behaviors:Interaction.Triggers>
-                                <behaviors:EventTrigger EventName="MouseLeftButtonDown">
-                                    <behaviors:InvokeCommandAction Command="{Binding OnMouseLeftButtonDownOnPictureCommand}"
-                                                                   PassEventArgsToCommand="True" />
-                                </behaviors:EventTrigger>
-                            </behaviors:Interaction.Triggers>
-                        </Image>
-                    </DockPanel>
-                </Grid>
-            </Border>
-            <Grid Grid.Row="2"
-                  HorizontalAlignment="Center">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto" />
-                    <ColumnDefinition Width="Auto" />
-                </Grid.ColumnDefinitions>
+							<VisualBrush
+								Visual="{Binding ElementName=mask}" />
+						</DockPanel.OpacityMask>
+						<Image
+							Source="{Binding PictureBitmapSource}"
+							Stretch="Fill"
+							Width="Auto"
+							Height="Auto">
+							<Image.Style>
+								<Style
+									TargetType="Image">
+									<Setter
+										Property="Cursor"
+										Value="Arrow" />
+									<Style.Triggers>
+										<DataTrigger
+											Binding="{Binding DrawingByHandEnabled}"
+											Value="True">
+											<Setter
+												Property="Cursor"
+												Value="Pen" />
+										</DataTrigger>
+									</Style.Triggers>
+								</Style>
+							</Image.Style>
+							<behaviors:Interaction.Triggers>
+								<behaviors:EventTrigger
+									EventName="MouseLeftButtonDown">
+									<behaviors:InvokeCommandAction
+										Command="{Binding OnMouseLeftButtonDownOnPictureCommand}"
+										PassEventArgsToCommand="True" />
+								</behaviors:EventTrigger>
+								<behaviors:EventTrigger
+									EventName="MouseMove">
+									<behaviors:InvokeCommandAction
+										Command="{Binding OnMouseMoveOnPictureCommand}"
+										PassEventArgsToCommand="True" />
+								</behaviors:EventTrigger>
+							</behaviors:Interaction.Triggers>
+						</Image>
+					</DockPanel>
+				</Grid>
+			</Border>
+			<Grid
+				Grid.Row="2"
+				HorizontalAlignment="Center">
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition
+						Width="Auto" />
+					<ColumnDefinition
+						Width="Auto" />
+				</Grid.ColumnDefinitions>
 
-                <Button Grid.Column="0"
-                        Command="{Binding CleanCommand}">
-                    Czyść
-                </Button>
+				<Button
+					Grid.Column="0"
+					Command="{Binding CleanCommand}">
+					Czyść
+				</Button>
 
-                <Button Grid.Column="1"
-                        Command="{Binding DoGraphCommand}">
-                    Wykres
-                </Button>
-            </Grid>
+				<Button
+					Grid.Column="1"
+					Command="{Binding DoGraphCommand}">
+					Wykres
+				</Button>
+			</Grid>
 
-            <Border Grid.Row="3"
-                    BorderThickness="2"
-                    Width="Auto"
-                    Height="Auto"
-                    BorderBrush="{StaticResource ForegroundColor}"
-                    CornerRadius="2"
-                    Margin="4"
-                    HorizontalAlignment="Center"
-                    VerticalAlignment="Center"
-                    Effect="{StaticResource dropShadow}">
-                <Grid>
-                    <Border Name="mask2"
-                            Background="{StaticResource ForegroundColor}"
-                            CornerRadius="1" />
-                    <DockPanel
-	                    Height="Auto">
+			<Border
+				Grid.Row="3"
+				BorderThickness="2"
+				Width="Auto"
+				Height="Auto"
+				BorderBrush="{StaticResource ForegroundColor}"
+				CornerRadius="2"
+				Margin="4"
+				HorizontalAlignment="Center"
+				VerticalAlignment="Center"
+				Effect="{StaticResource dropShadow}">
+				<Grid>
+					<Border
+						Name="mask2"
+						Background="{StaticResource ForegroundColor}"
+						CornerRadius="1" />
+					<DockPanel
+						Height="Auto">
 						<DockPanel.OpacityMask>
-                            <VisualBrush Visual="{Binding ElementName=mask2}" />
-                        </DockPanel.OpacityMask>
-                        <Image Source="{Binding GraphBitmapSource}"
-                               Stretch="Fill" />
-                    </DockPanel>
-                </Grid>
-            </Border>
-        </Grid>
+							<VisualBrush
+								Visual="{Binding ElementName=mask2}" />
+						</DockPanel.OpacityMask>
+						<Image
+							Source="{Binding GraphBitmapSource}"
+							Stretch="Fill" />
+					</DockPanel>
+				</Grid>
+			</Border>
+		</Grid>
 
-    </DockPanel>
+	</DockPanel>
 </UserControl>
