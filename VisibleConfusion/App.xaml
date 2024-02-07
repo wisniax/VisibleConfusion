@@ -16,6 +16,7 @@
                 <ResourceDictionary Source="Theme/Icons/arrowrightsolid.xaml" />
                 <ResourceDictionary Source="Theme/Icons/arrowleftsolid.xaml" />
                 <ResourceDictionary Source="Theme/IntegerUpDown.xaml" />
+                <ResourceDictionary Source="Theme/SideBarRadioButton.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
 
