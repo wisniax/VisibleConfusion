@@ -53,6 +53,7 @@ namespace VisibleConfusion.MVVM.ViewModel
 		public RelayCommand? CleanCommand { get; set; }
 		public RelayCommand? DoGraphCommand { get; set; }
 		public RelayCommand? OnMouseLeftButtonDownOnPictureCommand { get; set; }
+		public RelayCommand? OnMouseMoveOnPictureCommand { get; set; }
 		public RelayCommand? OnNumericUpDownPixelPosChangedCommand { get; set; }
 
 		private PictureHandler.Point2D _selectedPixelPos;
@@ -104,6 +105,20 @@ namespace VisibleConfusion.MVVM.ViewModel
 			}
 		}
 
+		private bool _drawingByHandEnabled = false;
+
+		public bool DrawingByHandEnabled
+		{
+			get => _drawingByHandEnabled;
+			set
+			{
+				_drawingByHandEnabled = value;
+				OnPropertyChanged();
+			}
+		}
+
+
+
 
 
 		public PictureViewModel()
@@ -112,8 +127,7 @@ namespace VisibleConfusion.MVVM.ViewModel
 			// PictureBitmapSource = _pictureHandler.CurrentFrame?.Convert<Bgr, byte>().ToBitmapSource();
 			_pictureHandler.FrameChanged += (sender) => PictureBitmapSource = sender?.Convert<Bgr, byte>().ToBitmapSource();
 			// _pictureHandler.FrameChanged += (sender) => PictureBitmapSource = sender?.Convert<Bgr, byte>().ToBitmapSource();
-			_pictureHandler.FrameChanged += (_) => MaxPixelPos = _pictureHandler.GetFrameRelativePos(new Point(1, 1));
-			_pictureHandler.FrameChanged += (_) => OnSelectedPixelPosChanged();
+			_pictureHandler.FrameChanged += (_) => OnFrameChanged();
 			_pictureHandler.GraphChanged += (sender) => GraphBitmapSource = sender?.Convert<Bgr, byte>().ToBitmapSource();
 
 			_selectedPixelPos = _pictureHandler.GetFrameRelativePos(new Point(0, 0));
@@ -123,15 +137,33 @@ namespace VisibleConfusion.MVVM.ViewModel
 			_pictureBitmapSource = new BitmapImage(new Uri("https://zoowojciechow.pl/images/lama-p-1080.jpeg"));
 			_graphBitmapSource = new BitmapImage(new Uri("https://i.gremicdn.pl/image/free/678943239052287d16ff4ae67c083de9/"));
 
-			DrawByHandCommand = new RelayCommand((o) => throw new NotImplementedException());
+			DrawByHandCommand = new RelayCommand((o) => DrawingByHandEnabled = !DrawingByHandEnabled);
 			FromFileCommand = new RelayCommand(FromFile);
 			FromCameraCommand = new RelayCommand(FromCamera);
 			CleanCommand = new RelayCommand((o) => _pictureHandler.ClearFrame());
 			DoGraphCommand = new RelayCommand((o) => throw new NotImplementedException());
 			OnMouseLeftButtonDownOnPictureCommand = new RelayCommand(MouseLeftButtonDownOnPicture);
+			OnMouseMoveOnPictureCommand = new RelayCommand(MouseMoveOnPicture);
 			OnNumericUpDownPixelPosChangedCommand = new RelayCommand((o) => OnSelectedPixelPosChanged());
 
 			CameraButtonEnabled = true;
+		}
+
+		private void OnFrameChanged()
+		{
+			if (!DrawingByHandEnabled)
+				SelectedColor = _pictureHandler.GetPixelFromPos(_selectedPixelPos);
+
+			MaxPixelPos = _pictureHandler.GetFrameRelativePos(new Point(1, 1));
+		}
+
+		private void MouseMoveOnPicture(object obj)
+		{
+			if (obj is not MouseEventArgs mouseEventArgs) return;
+			if (mouseEventArgs.LeftButton != MouseButtonState.Pressed) return;
+			if (mouseEventArgs.OriginalSource is not Image actualImage) return;
+			var point = mouseEventArgs.GetPosition(actualImage);
+			SelectedPixelPos = _pictureHandler.GetFrameRelativePos(new Point(point.X / actualImage.ActualWidth, point.Y / actualImage.ActualHeight));
 		}
 
 		private void MouseLeftButtonDownOnPicture(object obj)
@@ -166,7 +198,10 @@ namespace VisibleConfusion.MVVM.ViewModel
 
 		private void OnSelectedPixelPosChanged()
 		{
-			SelectedColor = _pictureHandler.GetPixelFromPos(_selectedPixelPos);
+			if (DrawingByHandEnabled)
+				_pictureHandler.SetDotAtPos(_selectedPixelPos, _selecctedColor, 3);
+			else
+				SelectedColor = _pictureHandler.GetPixelFromPos(_selectedPixelPos);
 		}
 	}
 }

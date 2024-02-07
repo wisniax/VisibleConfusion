@@ -228,5 +228,21 @@ namespace VisibleConfusion.MVVM.Model
 			var rgb = CurrentFrame?[safeY, safeX] ?? new Rgb(System.Drawing.Color.Black);
 			return new Color(rgb);
 		}
+
+		public void SetPixelAtPos(Point2D point, Color color)
+		{
+			var safeX = Int32.Clamp(point.X, 0, CurrentFrame?.Width - 1 ?? 0);
+			var safeY = Int32.Clamp(point.Y, 0, CurrentFrame?.Height - 1 ?? 0);
+			if (CurrentFrame != null) CurrentFrame[safeY, safeX] = color.ToRgb();
+			OnFrameChanged();
+		}
+
+		public void SetDotAtPos(Point2D point, Color color, int radius)
+		{
+			var safeX = Int32.Clamp(point.X, 0, CurrentFrame?.Width - 1 ?? 0);
+			var safeY = Int32.Clamp(point.Y, 0, CurrentFrame?.Height - 1 ?? 0);
+			if (CurrentFrame != null) CurrentFrame.Draw(new CircleF(new System.Drawing.Point(safeX, safeY), radius), color.ToRgb(), -1);
+			OnFrameChanged();
+		}
 	}
 }
