@@ -78,10 +78,10 @@
                                  Value="true">
                             <Setter Property="Background"
                                     TargetName="border"
-                                    Value="{StaticResource AccentColor}" />
+                                    Value="{StaticResource HoverColor}" />
                             <Setter Property="BorderBrush"
                                     TargetName="border"
-                                    Value="{StaticResource AccentColor}" />
+                                    Value="{StaticResource HoverColor}" />
                         </Trigger>
                         <Trigger Property="IsEnabled"
                                  Value="false">

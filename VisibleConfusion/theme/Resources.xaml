@@ -8,7 +8,7 @@
     <SolidColorBrush x:Key="BackgroundColor"
                      Color="#0C0C0C" />
     <SolidColorBrush x:Key="HoverColor"
-                     Color="#FF0000" />
+                     Color="{Binding Source={x:Static SystemParameters.WindowGlassColor}}" />
     <SolidColorBrush x:Key="ElementColor"
                      Color="#000" />
     <SolidColorBrush x:Key="ForegroundColor"
@@ -16,7 +16,7 @@
     <SolidColorBrush x:Key="TextColor_1"
                      Color="White" />
     <SolidColorBrush x:Key="DisabledColor"
-                     Color="#FF00FF" />
+                     Color="#FF00FF" /> <!-- Kuba proszę napisz żeby konwerter też dawał jeszcze jaśniejszy kolor coś w stylu jak teraz dajesz +74 to daj dwa razy tyle -->
     <DropShadowEffect x:Key="dropShadow"
                       Color="#000"
                       Direction="270"
