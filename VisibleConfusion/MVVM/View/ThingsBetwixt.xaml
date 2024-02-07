@@ -6,8 +6,7 @@
              xmlns:local="clr-namespace:VisibleConfusion.MVVM.View"
              xmlns:viewModel="clr-namespace:VisibleConfusion.MVVM.ViewModel"
              mc:Ignorable="d"
-             d:DesignWidth="120"
-             Height="500">
+             d:DesignWidth="120">
     <DockPanel>
         <WrapPanel DockPanel.Dock="Top"
                    Margin="1"
