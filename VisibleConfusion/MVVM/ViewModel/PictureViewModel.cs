@@ -15,7 +15,6 @@ using Microsoft.Win32;
 using VisibleConfusion.Core;
 using VisibleConfusion.MVVM.Model;
 using Windows.Graphics;
-using Emgu.CV.CvEnum;
 using Point = Windows.Foundation.Point;
 
 namespace VisibleConfusion.MVVM.ViewModel
@@ -47,7 +46,6 @@ namespace VisibleConfusion.MVVM.ViewModel
 		}
 
 		private PictureHandler _pictureHandler;
-		public Image<Rgb, byte>? CurrentFrame => _pictureHandler.CurrentFrame;
 
 		public RelayCommand? DrawByHandCommand { get; set; }
 		public RelayCommand? FromFileCommand { get; set; }
@@ -149,14 +147,6 @@ namespace VisibleConfusion.MVVM.ViewModel
 			OnNumericUpDownPixelPosChangedCommand = new RelayCommand((o) => OnSelectedPixelPosChanged());
 
 			CameraButtonEnabled = true;
-		}
-
-		public void SetPicture(Image<Rgb, byte>? picture, Rgb? filterColor, bool toGrayscale)
-		{
-			if (picture?.Data == null)
-				return;
-			var newPicture = picture.Clone();
-			_pictureHandler.SetFrame(newPicture, filterColor ?? new Rgb(System.Drawing.Color.Black), toGrayscale);
 		}
 
 		private void OnFrameChanged()
