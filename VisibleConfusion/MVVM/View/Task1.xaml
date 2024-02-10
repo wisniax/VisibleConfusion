@@ -70,7 +70,6 @@
 
 		</DockPanel>
 		<local:PictureView
-			DataContext="{Binding RightPictureViewModel}"
 			Grid.Column="2" />
 	</Grid>
 </UserControl>

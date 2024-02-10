@@ -24,5 +24,5 @@ namespace VisibleConfusion.MVVM.View
         {
             InitializeComponent();
         }
-	}
+    }
 }

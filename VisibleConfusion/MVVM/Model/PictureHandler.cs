@@ -244,43 +244,5 @@ namespace VisibleConfusion.MVVM.Model
 			if (CurrentFrame != null) CurrentFrame.Draw(new CircleF(new System.Drawing.Point(safeX, safeY), radius), color.ToRgb(), -1);
 			OnFrameChanged();
 		}
-
-		public void SetFrame(Image<Rgb, byte> frame, Rgb filterColor, bool toGrayscale = false)
-		{
-			if (toGrayscale)
-				CurrentFrame = ToGrayscale(frame);
-			else
-				CurrentFrame = OnlyPassColor(frame, filterColor);
-		}
-
-		private Image<Rgb, byte> ToGrayscale(Image<Rgb, byte> frame)
-		{
-			for (int i = 0; i < frame.Height; i++)
-			{
-				for (int j = 0; j < frame.Width; j++)
-				{
-					var color = frame[i, j];
-					var gray = (color.Red + color.Green + color.Blue) / 3;
-					frame[i, j] = new Rgb(gray, gray, gray);
-				}
-			}
-			return frame;
-		}
-
-		private Image<Rgb, byte> OnlyPassColor(Image<Rgb, byte> frame, Rgb filterColor)
-		{
-			for (int i = 0; i < frame.Height; i++)
-			{
-				for (int j = 0; j < frame.Width; j++)
-				{
-					var color = frame[i, j];
-					color.Red =  Double.Clamp(color.Red, 0, filterColor.Red);
-					color.Green = Double.Clamp(color.Green, 0, filterColor.Green);
-					color.Blue = Double.Clamp(color.Blue, 0, filterColor.Blue);
-					frame[i, j] = color;
-				}
-			}
-			return frame;
-		}
 	}
 }
