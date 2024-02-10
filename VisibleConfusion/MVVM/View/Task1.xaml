@@ -6,6 +6,9 @@
 	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
 	xmlns:local="clr-namespace:VisibleConfusion.MVVM.View"
 	xmlns:viewModel="clr-namespace:VisibleConfusion.MVVM.ViewModel">
+	<UserControl.DataContext>
+		<viewModel:Task1ViewModel />
+	</UserControl.DataContext>
 	<Grid>
 		<Grid.ColumnDefinitions>
 			<ColumnDefinition
@@ -16,7 +19,8 @@
 				Width="1.5*" />
 		</Grid.ColumnDefinitions>
 		<local:PictureView
-			Grid.Column="0" />
+			Grid.Column="0"
+			DataContext="{Binding LeftPictureViewModel}" />
 		<DockPanel
 			Grid.Column="1">
 			<WrapPanel
@@ -38,7 +42,8 @@
 					<RowDefinition />
 					<RowDefinition />
 				</Grid.RowDefinitions>
-				<Button>
+				<Button
+					Command="{Binding LeftToRightCommand}">
 					<Control
 						Style="{StaticResource RightArrow}"
 						RenderTransformOrigin="1,1"
@@ -48,14 +53,24 @@
 				</Button>
 				<CheckBox
 					Grid.Row="1"
-					HorizontalAlignment="Center">R</CheckBox>
+					HorizontalAlignment="Center"
+					IsChecked="{Binding SelectedFilter.Red}">
+					R
+				</CheckBox>
 				<CheckBox
 					Grid.Row="2"
-					HorizontalAlignment="Center">G</CheckBox>
+					HorizontalAlignment="Center"
+					IsChecked="{Binding SelectedFilter.Green}">
+					G
+				</CheckBox>
 				<CheckBox
 					Grid.Row="3"
-					HorizontalAlignment="Center">B</CheckBox>
+					HorizontalAlignment="Center"
+					IsChecked="{Binding SelectedFilter.Blue}">
+					B
+				</CheckBox>
 				<Button
+					Command="{Binding RightToLeftCommand}"
 					Grid.Row="4">
 					<Control
 						Style="{StaticResource LeftArrow}"
@@ -70,6 +85,7 @@
 
 		</DockPanel>
 		<local:PictureView
+			DataContext="{Binding RightPictureViewModel}"
 			Grid.Column="2" />
 	</Grid>
 </UserControl>
