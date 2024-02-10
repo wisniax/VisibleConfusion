@@ -9,16 +9,16 @@
         Height="500"
         MinWidth="500"
         MinHeight="100"
-        Width="800"
+        Width="1000"
         WindowStyle="SingleBorderWindow"
         Background="#111">
     <WindowChrome.WindowChrome>
         <WindowChrome GlassFrameThickness="0"
                       UseAeroCaptionButtons="False"
-                      ResizeBorderThickness="{x:Static SystemParameters.WindowResizeBorderThickness}" />
+                      ResizeBorderThickness="5" />
     </WindowChrome.WindowChrome>
     <Grid 
-         Margin="{x:Static SystemParameters.WindowResizeBorderThickness}">
+         Margin="5">
         <Grid.RowDefinitions>
             <RowDefinition Height="auto" />
             <RowDefinition />

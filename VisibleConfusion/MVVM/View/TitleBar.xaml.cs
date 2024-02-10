@@ -34,28 +34,15 @@ namespace VisibleConfusion.MVVM.View
         }
         private void OnMaximizeRestoreButtonClick(object sender, RoutedEventArgs e)
         {
-            
+
             if (Application.Current.MainWindow.WindowState == WindowState.Maximized)
             {
                 Application.Current.MainWindow.WindowState = WindowState.Normal;
             }
-            else {
+            else
+            {
                 Application.Current.MainWindow.WindowState = WindowState.Maximized;
             }
         }
-        public void RefreshMaximizeRestoreButton()
-        {
-            if (Application.Current.MainWindow.WindowState == WindowState.Maximized)
-            {
-                this.maximizeButton.Visibility = Visibility.Collapsed;
-                this.restoreButton.Visibility = Visibility.Visible;
-            }
-            else
-            {
-                this.maximizeButton.Visibility = Visibility.Visible;
-                this.restoreButton.Visibility = Visibility.Collapsed;
-            }
-        }
-
     }
 }

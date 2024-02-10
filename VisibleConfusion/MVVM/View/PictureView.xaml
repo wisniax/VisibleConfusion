@@ -8,7 +8,6 @@
 	xmlns:viewModel="clr-namespace:VisibleConfusion.MVVM.ViewModel"
 	xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
 	xmlns:behaviors="http://schemas.microsoft.com/xaml/behaviors"
-	xmlns:themes="clr-namespace:Xceed.Wpf.Toolkit.Themes;assembly=Xceed.Wpf.Toolkit.NET5"
 	mc:Ignorable="d"
 	d:DesignWidth="310"
 	d:DesignHeight="460">
