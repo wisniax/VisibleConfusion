@@ -21,6 +21,7 @@
                 <ResourceDictionary Source="Theme/IntegerUpDown.xaml" />
                 <ResourceDictionary Source="Theme/SideBarRadioButton.xaml" />
                 <ResourceDictionary Source="Theme/Icons/restore.xaml" />
+                <ResourceDictionary Source="Theme/RadioButton.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
 
