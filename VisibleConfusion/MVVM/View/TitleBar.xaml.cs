@@ -34,7 +34,7 @@ namespace VisibleConfusion.MVVM.View
         }
         private void OnMaximizeRestoreButtonClick(object sender, RoutedEventArgs e)
         {
-            Application.Current.MainWindow.MaxHeight = SystemParameters.MaximizedPrimaryScreenHeight;
+            
             if (Application.Current.MainWindow.WindowState == WindowState.Maximized)
             {
                 Application.Current.MainWindow.WindowState = WindowState.Normal;

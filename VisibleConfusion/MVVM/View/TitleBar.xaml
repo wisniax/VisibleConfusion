@@ -117,7 +117,9 @@
                 <ColumnDefinition Width="Auto" />
             </Grid.ColumnDefinitions>
             <TextBlock Foreground="{StaticResource TextColor_1}"
-                       Grid.Column="0">Visible Confusion App</TextBlock>
+                       Grid.Column="0"
+                       HorizontalAlignment="Left"
+                       Margin="8,0,0,0">Visible Confusion App</TextBlock>
             <Button Style="{DynamicResource TitleBarButtons}"
                     Grid.Column="1"
                     Click="OnMinimizeButtonClick"

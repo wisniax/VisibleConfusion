@@ -10,12 +10,12 @@
         MinWidth="500"
         MinHeight="100"
         Width="800"
-        WindowStyle="None"
+        WindowStyle="SingleBorderWindow"
         Background="#111">
     <WindowChrome.WindowChrome>
-        <WindowChrome CaptionHeight="32"
-                      ResizeBorderThickness="{x:Static SystemParameters.WindowResizeBorderThickness}" 
-                      />
+        <WindowChrome GlassFrameThickness="0"
+                      UseAeroCaptionButtons="False"
+                      ResizeBorderThickness="{x:Static SystemParameters.WindowResizeBorderThickness}" />
     </WindowChrome.WindowChrome>
     <Grid 
          Margin="{x:Static SystemParameters.WindowResizeBorderThickness}">
