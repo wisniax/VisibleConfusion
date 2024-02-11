@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:VisibleConfusion.MVVM.View"
         mc:Ignorable="d"
         Title="MainWindow"
-        Height="500"
+        Height="550"
         MinWidth="500"
         MinHeight="100"
         Width="1000"
