@@ -24,7 +24,7 @@
                        Margin="1"
                        VerticalAlignment="Center"
                        HorizontalAlignment="Center">
-                <Button>Prosty film</Button>
+                
             </WrapPanel>
             <Grid DockPanel.Dock="Bottom"
                   HorizontalAlignment="Center"
