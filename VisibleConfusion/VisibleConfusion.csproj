@@ -10,12 +10,22 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="theme\Fonts\BlackOpsOne-Regular.ttf" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Emgu.CV" Version="4.8.0.5324" />
     <PackageReference Include="Emgu.CV.Bitmap" Version="4.8.0.5324" />
     <PackageReference Include="Emgu.CV.runtime.windows" Version="4.8.0.5324" />
     <PackageReference Include="Emgu.CV.Wpf" Version="4.8.0.5324" />
     <PackageReference Include="Extended.Wpf.Toolkit" Version="4.6.0" />
     <PackageReference Include="Microsoft.Xaml.Behaviors.Wpf" Version="1.1.77" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="theme\Fonts\BlackOpsOne-Regular.ttf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
 
 </Project>

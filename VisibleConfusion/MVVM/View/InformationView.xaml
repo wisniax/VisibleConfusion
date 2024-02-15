@@ -8,6 +8,6 @@
              xmlns:viewModel="clr-namespace:VisibleConfusion.MVVM.ViewModel"
              xmlns:behaviors="http://schemas.microsoft.com/xaml/behaviors">
     <Grid>
-        <TextBlock Foreground="White" FontFamily="{StaticResource BlackOpsOne}">Visible Confusion</TextBlock>
+        <TextBlock FontSize="40" Foreground="White" FontFamily="{StaticResource BlackOpsOne}">Visible Confusion</TextBlock>
     </Grid>
 </UserControl>
