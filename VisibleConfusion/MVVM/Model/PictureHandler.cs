@@ -97,6 +97,9 @@ namespace VisibleConfusion.MVVM.Model
 		public PictureHandler()
 		{
 			ClearFrame();
+
+			_currentFrame = Properties.Resources.lama1080.ToImage<Rgb, byte>();
+			_currentGraph = Properties.Resources.panda.ToImage<Rgb, byte>();
 		}
 
 		private void OnFrameChanged()

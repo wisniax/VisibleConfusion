@@ -183,7 +183,7 @@
                         <DockPanel.OpacityMask>
                             <VisualBrush Visual="{Binding ElementName=mask}" />
                         </DockPanel.OpacityMask>
-                        <Image Source="{Binding PictureBitmapSource}"
+                        <Image Source="{Binding PictureBitmap}"
                                Stretch="Fill"
                                Width="Auto"
                                Height="Auto">
@@ -247,7 +247,7 @@
                         <DockPanel.OpacityMask>
                             <VisualBrush Visual="{Binding ElementName=mask2}" />
                         </DockPanel.OpacityMask>
-                        <Image Source="{Binding GraphBitmapSource}"
+                        <Image Source="{Binding GraphBitmap}"
                                Stretch="Fill" />
                     </DockPanel>
                 </Grid>
