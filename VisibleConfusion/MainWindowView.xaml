@@ -46,6 +46,7 @@
 				<RadioButton
 					Style="{DynamicResource SideBarRadioButton}"
 					DockPanel.Dock="Top"
+					Command="{Binding OpenTask0Command}"
 					Content="0" />
 				<RadioButton
 					Style="{DynamicResource SideBarRadioButton}"
@@ -82,7 +83,7 @@
 				Grid.Column="1" 
 				Margin="0"
 				BorderThickness="0"
-				Content=""/>
+				Content="{Binding CurrentView}"/>
 		</Grid>
 	</Grid>
 </Window>
