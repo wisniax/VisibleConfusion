@@ -12,17 +12,18 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using VisibleConfusion.MVVM.View;
 
-namespace VisibleConfusion.MVVM.View
+namespace VisibleConfusion
 {
-    /// <summary>
-    /// Interaction logic for Task2.xaml
-    /// </summary>
-    public partial class Task2 : UserControl
-    {
-        public Task2()
-        {
-            InitializeComponent();
-        }
+	/// <summary>
+	/// Interaction logic for MainWindowView.xaml
+	/// </summary>
+	public partial class MainWindowView : Window
+	{
+		public MainWindowView()
+		{
+			InitializeComponent();
+		}
 	}
 }

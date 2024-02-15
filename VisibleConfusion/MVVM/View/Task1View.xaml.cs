@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace VisibleConfusion.MVVM.View
 {
     /// <summary>
-    /// Interaction logic for Task1.xaml
+    /// Interaction logic for Task1View.xaml
     /// </summary>
-    public partial class Task1 : UserControl
+    public partial class Task1View : UserControl
     {
-        public Task1()
+        public Task1View()
         {
             InitializeComponent();
         }
