@@ -1,89 +1,72 @@
-﻿<Window
-	x:Class="VisibleConfusion.MainWindowView"
-	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-	xmlns:local="clr-namespace:VisibleConfusion.MVVM.View"
-	xmlns:viewModel="clr-namespace:VisibleConfusion.MVVM.ViewModel"
-	mc:Ignorable="d"
-	Title="MainWindowView"
-	Height="550"
-	MinWidth="900"
-	MinHeight="100"
-	Width="1000"
-	WindowStyle="SingleBorderWindow"
-	Background="#111">
-	<Window.DataContext>
-		<viewModel:MainWindowViewModel />
-	</Window.DataContext>
-	<WindowChrome.WindowChrome>
-		<WindowChrome
-			GlassFrameThickness="0"
-			UseAeroCaptionButtons="False"
-			ResizeBorderThickness="5" />
-	</WindowChrome.WindowChrome>
-	<Grid
-		Margin="5">
-		<Grid.RowDefinitions>
-			<RowDefinition
-				Height="auto" />
-			<RowDefinition />
-		</Grid.RowDefinitions>
-		<local:TitleBar />
-		<Grid
-			Grid.Row="1">
-			<Grid.ColumnDefinitions>
-				<ColumnDefinition
-					Width="Auto" />
-				<ColumnDefinition
-					Width="1.5*" />
-			</Grid.ColumnDefinitions>
-			<DockPanel
-				VerticalAlignment="Top"
-				HorizontalAlignment="Center"
-				Dock="Top">
-				<RadioButton
-					Style="{DynamicResource SideBarRadioButton}"
-					DockPanel.Dock="Top"
-					Command="{Binding OpenTask0Command}"
-					Content="0" />
-				<RadioButton
-					Style="{DynamicResource SideBarRadioButton}"
-					DockPanel.Dock="Top"
-					d:IsChecked="True"
-					Command="{Binding OpenTask1Command}"
-					Content="1" />
-				<RadioButton
-					Style="{DynamicResource SideBarRadioButton}"
-					DockPanel.Dock="Top"
-					Command="{Binding OpenTask2Command}"
-					Content="2" />
-				<RadioButton
-					Style="{DynamicResource SideBarRadioButton}"
-					DockPanel.Dock="Top"
-					Command="{Binding OpenTask3Command}"
-					Content="3" />
-				<RadioButton
-					Style="{DynamicResource SideBarRadioButton}"
-					DockPanel.Dock="Top"
-					Content="4" />
-				<RadioButton
-					Style="{DynamicResource SideBarRadioButton}"
-					DockPanel.Dock="Top"
-					Content="5" />
-				<RadioButton
-					Style="{DynamicResource SideBarRadioButton}"
-					DockPanel.Dock="Top"
-					Content="6" />
-			</DockPanel>
-			<!--<local:Task1
+﻿<Window x:Class="VisibleConfusion.MainWindowView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:VisibleConfusion.MVVM.View"
+        xmlns:viewModel="clr-namespace:VisibleConfusion.MVVM.ViewModel"
+        mc:Ignorable="d"
+        Title="MainWindowView"
+        Height="550"
+        MinWidth="900"
+        MinHeight="100"
+        Width="1000"
+        WindowStyle="SingleBorderWindow"
+        Background="#111">
+    <Window.DataContext>
+        <viewModel:MainWindowViewModel />
+    </Window.DataContext>
+    <WindowChrome.WindowChrome>
+        <WindowChrome GlassFrameThickness="0"
+                      UseAeroCaptionButtons="False"
+                      ResizeBorderThickness="5" />
+    </WindowChrome.WindowChrome>
+    <Grid Margin="5">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <local:TitleBar />
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="1.5*" />
+            </Grid.ColumnDefinitions>
+            <DockPanel VerticalAlignment="Top"
+                       HorizontalAlignment="Center"
+                       Dock="Top">
+                <RadioButton Style="{DynamicResource SideBarRadioButton}"
+                             DockPanel.Dock="Top"
+                             GroupName="View"
+                             d:IsChecked="True"
+                             Command="{Binding OpenTask1Command}"
+                             Content="1" />
+                <RadioButton Style="{DynamicResource SideBarRadioButton}"
+                             DockPanel.Dock="Top"
+                             GroupName="View"
+                             Command="{Binding OpenTask2Command}"
+                             Content="2" />
+                <RadioButton Style="{DynamicResource SideBarRadioButton}"
+                             DockPanel.Dock="Top"
+                             GroupName="View"
+                             Command="{Binding OpenTask3Command}"
+                             Content="3" />
+            </DockPanel>
+            <DockPanel VerticalAlignment="Bottom"
+                       HorizontalAlignment="Center"
+                       Dock="Bottom">
+                <RadioButton Style="{DynamicResource SideBarRadioButton}"
+                             DockPanel.Dock="Bottom"
+                             GroupName="View"
+                             Command="{Binding OpenInformationCommand}"
+                             Content="i" />
+            </DockPanel>
+            <!--<local:Task1
 				Grid.Column="1" />-->
-			<ContentControl
-				Grid.Column="1" 
-				Margin="0"
-				BorderThickness="0"
-				Content="{Binding CurrentView}"/>
-		</Grid>
-	</Grid>
+            <ContentControl Grid.Column="1"
+                            Margin="0"
+                            BorderThickness="0"
+                            Content="{Binding CurrentView}" />
+        </Grid>
+    </Grid>
 </Window>
