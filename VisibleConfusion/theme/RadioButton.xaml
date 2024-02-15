@@ -50,6 +50,8 @@
     <SolidColorBrush x:Key="RadioButton.Disabled.Glyph"
                      Color="#FF707070" />
     <Style TargetType="{x:Type RadioButton}">
+        <Setter Property="HorizontalAlignment"
+                Value="Center" />
         <Setter Property="FocusVisualStyle"
                 Value="{StaticResource FocusVisual}" />
         <Setter Property="Background"
@@ -117,7 +119,7 @@
                                     Value="{StaticResource RadioButton.MouseOver.Background}" />
                             <Setter Property="BorderBrush"
                                     TargetName="radioButtonBorder"
-                                    Value="{StaticResource AccentColor}"/>
+                                    Value="{StaticResource AccentColor}" />
                             <Setter Property="Fill"
                                     TargetName="optionMark"
                                     Value="{StaticResource RadioButton.MouseOver.Glyph}" />

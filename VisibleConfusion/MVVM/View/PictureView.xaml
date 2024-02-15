@@ -31,7 +31,7 @@
                     </Grid.ColumnDefinitions>
                     <Button Grid.Column="0"
                             Command="{Binding DrawByHandCommand}">
-                        Grafika
+                        Rysuj
                     </Button>
 
                     <Button Grid.Column="1"
@@ -68,17 +68,18 @@
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="0.4*" />
             </Grid.RowDefinitions>
-            <Grid Grid.Row="0" HorizontalAlignment="Center">
+            <Grid Grid.Row="0"
+                  HorizontalAlignment="Center">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*" />
                     <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="auto"/>
-                    <ColumnDefinition Width="auto"/>
-                    <ColumnDefinition Width="auto"/>
-                    <ColumnDefinition Width="auto"/>
-                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="auto" />
+                    <ColumnDefinition Width="auto" />
+                    <ColumnDefinition Width="auto" />
+                    <ColumnDefinition Width="auto" />
+                    <ColumnDefinition Width="auto" />
                 </Grid.ColumnDefinitions>
 
                 <!--dox: https://github.com/xceedsoftware/wpftoolkit/wiki/IntegerUpDown-->
@@ -253,6 +254,5 @@
                 </Grid>
             </Border>
         </Grid>
-
     </DockPanel>
 </UserControl>
