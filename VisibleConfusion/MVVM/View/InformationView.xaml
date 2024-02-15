@@ -7,7 +7,60 @@
              xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
              xmlns:viewModel="clr-namespace:VisibleConfusion.MVVM.ViewModel"
              xmlns:behaviors="http://schemas.microsoft.com/xaml/behaviors">
-    <Grid>
-        <TextBlock FontSize="40" Foreground="White" FontFamily="{StaticResource BlackOpsOne}">Visible Confusion</TextBlock>
+    <Grid HorizontalAlignment="Center"
+          VerticalAlignment="Center">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto" />
+        </Grid.ColumnDefinitions>
+        <TextBlock FontSize="70"
+                   Foreground="{StaticResource AccentColor}"
+                   FontFamily="{StaticResource BlackOpsOne}">Visible Confusion</TextBlock>
+        <Border Grid.Row="1"
+                Background="{StaticResource ForegroundColor}"
+                CornerRadius="10"
+                Margin="70,15"
+                Padding="0,0,0,5">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                </Grid.RowDefinitions>
+                <TextBlock FontSize="40"
+                           Foreground="{StaticResource TextColor_1}">Wykonali:</TextBlock>
+                <TextBlock FontSize="30"
+                           Grid.Row="1"
+                           Foreground="{StaticResource TextColor_1}">Jakub Wiśniewski 240482</TextBlock>
+                <TextBlock FontSize="30"
+                           Grid.Row="2"
+                           Foreground="{StaticResource TextColor_1}">Jarosław Wierzbowski 240481</TextBlock>
+                <TextBlock FontSize="30"
+                           Grid.Row="3"
+                           Foreground="{StaticResource TextColor_1}">Krzysztof Kazuba 240423</TextBlock>
+            </Grid>
+        </Border>
+        <Border Grid.Row="2"
+                Background="{StaticResource ForegroundColor}"
+                CornerRadius="10"
+                Margin="70,15"
+                Padding="0,0,0,5">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                </Grid.RowDefinitions>
+                <TextBlock FontSize="40"
+                           Foreground="{StaticResource TextColor_1}">Prowadzący:</TextBlock>
+                <TextBlock Grid.Row="1"
+                           FontSize="30"
+                           Foreground="{StaticResource TextColor_1}">mgr inż. Piotr Łuczak</TextBlock>
+            </Grid>
+        </Border>
     </Grid>
 </UserControl>
