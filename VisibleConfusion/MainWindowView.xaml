@@ -98,7 +98,6 @@
                 <RadioButton Style="{DynamicResource SideBarRadioButton}"
                              DockPanel.Dock="Top"
                              GroupName="View"
-                             d:IsChecked="True"
                              Command="{Binding OpenTask1Command}"
                              Content="1" />
                 <RadioButton Style="{DynamicResource SideBarRadioButton}"
@@ -119,6 +118,7 @@
                              DockPanel.Dock="Bottom"
                              GroupName="View"
                              Command="{Binding OpenInformationCommand}"
+							 IsChecked="True"
                              Content="i" />
             </DockPanel>
             <!--<local:Task1

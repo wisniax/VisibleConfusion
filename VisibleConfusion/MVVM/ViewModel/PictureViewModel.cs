@@ -22,29 +22,29 @@ namespace VisibleConfusion.MVVM.ViewModel
 {
 	internal class PictureViewModel : ObservableObject
 	{
-		private BitmapSource? _pictureBitmapSource;
+		//private BitmapSource? _pictureBitmapSource;
 
-		public BitmapSource? PictureBitmapSource
-		{
-			get => _pictureBitmapSource;
-			private set
-			{
-				_pictureBitmapSource = value;
-				OnPropertyChanged();
-			}
-		}
+		//public BitmapSource? PictureBitmapSource
+		//{
+		//	get => _pictureBitmapSource;
+		//	private set
+		//	{
+		//		_pictureBitmapSource = value;
+		//		OnPropertyChanged();
+		//	}
+		//}
 
-		private BitmapSource? _graphBitmapSource;
+		//private BitmapSource? _graphBitmapSource;
 
-		public BitmapSource? GraphBitmapSource
-		{
-			get => _graphBitmapSource;
-			private set
-			{
-				_graphBitmapSource = value;
-				OnPropertyChanged();
-			}
-		}
+		//public BitmapSource? GraphBitmapSource
+		//{
+		//	get => _graphBitmapSource;
+		//	private set
+		//	{
+		//		_graphBitmapSource = value;
+		//		OnPropertyChanged();
+		//	}
+		//}
 
 		private PictureHandler _pictureHandler;
 		public Image<Rgb, byte>? CurrentFrame => _pictureHandler.CurrentFrame;
@@ -119,25 +119,46 @@ namespace VisibleConfusion.MVVM.ViewModel
 			}
 		}
 
+		private WriteableBitmap? _pictureBitmap;
 
+		public WriteableBitmap? PictureBitmap
+		{
+			get => _pictureBitmap;
+			private set
+			{
+				_pictureBitmap = value;
+				OnPropertyChanged();
+			}
+		}
 
+		private WriteableBitmap? _graphBitmap;
+
+		public WriteableBitmap? GraphBitmap
+		{
+			get => _graphBitmap;
+			private set
+			{
+				_graphBitmap = value;
+				OnPropertyChanged();
+			}
+		}
 
 
 		public PictureViewModel()
 		{
 			_pictureHandler = new PictureHandler();
 			// PictureBitmapSource = _pictureHandler.CurrentFrame?.Convert<Bgr, byte>().ToBitmapSource();
-			_pictureHandler.FrameChanged += (sender) => PictureBitmapSource = sender?.Convert<Bgr, byte>().ToBitmapSource();
+			_pictureHandler.FrameChanged += SetWriteablePictureBitmap;
 			// _pictureHandler.FrameChanged += (sender) => PictureBitmapSource = sender?.Convert<Bgr, byte>().ToBitmapSource();
 			_pictureHandler.FrameChanged += (_) => OnFrameChanged();
-			_pictureHandler.GraphChanged += (sender) => GraphBitmapSource = sender?.Convert<Bgr, byte>().ToBitmapSource();
+			_pictureHandler.GraphChanged += SetWriteableGraphBitmap;
 
 			_selectedPixelPos = _pictureHandler.GetFrameRelativePos(new Point(0, 0));
 			_maxPixelPos = _pictureHandler.GetFrameRelativePos(new Point(1, 1));
 			_selecctedColor = _pictureHandler.GetPixelFromPos(SelectedPixelPos);
 
-			_pictureBitmapSource = new BitmapImage(new Uri("https://zoowojciechow.pl/images/lama-p-1080.jpeg"));
-			_graphBitmapSource = new BitmapImage(new Uri("https://i.gremicdn.pl/image/free/678943239052287d16ff4ae67c083de9/"));
+			SetWriteablePictureBitmap(_pictureHandler.CurrentFrame);
+			SetWriteableGraphBitmap(_pictureHandler.CurrentGraph);
 
 			DrawByHandCommand = new RelayCommand((o) => DrawingByHandEnabled = !DrawingByHandEnabled);
 			FromFileCommand = new RelayCommand(FromFile);
@@ -151,12 +172,32 @@ namespace VisibleConfusion.MVVM.ViewModel
 			CameraButtonEnabled = true;
 		}
 
-		public void SetPicture(Image<Rgb, byte>? picture, Rgb? filterColor, bool toGrayscale)
+		private void SetWriteablePictureBitmap(Image<Rgb, byte>? picture)
+		{
+			if (picture?.Data == null)
+				return;
+
+			if (PictureBitmap == null || PictureBitmap.PixelWidth != picture.Width || PictureBitmap.PixelHeight != picture.Height)
+				PictureBitmap = new WriteableBitmap(picture.Width, picture.Height, 96, 96, PixelFormats.Rgb24, null);
+			PictureBitmap?.WritePixels(new Int32Rect(0, 0, picture.Width, picture.Height), picture.Bytes, picture.Width * 3, 0);
+		}
+
+		private void SetWriteableGraphBitmap(Image<Rgb, byte>? picture)
+		{
+			if (picture?.Data == null)
+				return;
+
+			if (GraphBitmap == null || GraphBitmap.PixelWidth != picture.Width || GraphBitmap.PixelHeight != picture.Height)
+				GraphBitmap = new WriteableBitmap(picture.Width, picture.Height, 96, 96, PixelFormats.Rgb24, null);
+			GraphBitmap?.WritePixels(new Int32Rect(0, 0, picture.Width, picture.Height), picture.Bytes, picture.Width * 3, 0);
+		}
+
+		public void SetPicture(Image<Rgb, byte>? picture, Rgb? filterColor, bool? toGrayscale)
 		{
 			if (picture?.Data == null)
 				return;
 			var newPicture = picture.Clone();
-			_pictureHandler.SetFrame(newPicture, filterColor ?? new Rgb(System.Drawing.Color.Black), toGrayscale);
+			_pictureHandler.SetFrame(newPicture, filterColor ?? new Rgb(System.Drawing.Color.White), toGrayscale ?? false);
 		}
 
 		private void OnFrameChanged()
@@ -191,7 +232,7 @@ namespace VisibleConfusion.MVVM.ViewModel
 				Multiselect = false,
 				CheckPathExists = true,
 				CheckFileExists = true,
-				Filter = "Image files (*.png;*.jpeg;*.jpg)|*.png;*.jpeg;*.jpg|All files (*.*)|*.*"
+				Filter = "Image files (*.jpg;*.jpeg)|*.jpg;*.jpeg|All files (*.*)|*.*"
 			};
 
 			if (openFileDialog.ShowDialog() != true) return;
@@ -202,7 +243,7 @@ namespace VisibleConfusion.MVVM.ViewModel
 		{
 			CameraButtonEnabled = false;
 			if (!(await _pictureHandler.ToggleCameraFeedAsync()))
-				PictureBitmapSource = new BitmapImage(new Uri("http://www.quickmeme.com/img/8e/8ebf027f8f79f4b1b959341cb0a6f91bd28f6ec612dbc32c032712f8a6834a24.jpg"));
+				SetPicture(Properties.Resources.cameraWhere.ToImage<Rgb, byte>(), null, null);
 			CameraButtonEnabled = true;
 		}
 

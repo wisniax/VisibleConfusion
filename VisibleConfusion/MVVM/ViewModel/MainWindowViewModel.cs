@@ -37,6 +37,8 @@ namespace VisibleConfusion.MVVM.ViewModel
 			OpenTask2Command = new RelayCommand(_ => CurrentView = task2View);
 			OpenTask3Command = new RelayCommand(_ => throw new NotImplementedException("Task3 is not 'yet' implemented"));
             OpenInformationCommand = new RelayCommand(_ => CurrentView = informationView);
+
+			CurrentView = informationView;
         }
 	}
 }
