@@ -24,7 +24,9 @@ namespace VisibleConfusion
 		public MainWindowView()
 		{
 			InitializeComponent();
-		}
+            RefreshMaximizeRestoreButton();
+
+        }
         private void OnMinimizeButtonClick(object sender, RoutedEventArgs e)
         {
             this.WindowState = WindowState.Minimized;
@@ -35,7 +37,6 @@ namespace VisibleConfusion
         }
         private void OnMaximizeRestoreButtonClick(object sender, RoutedEventArgs e)
         {
-
             if (this.WindowState == WindowState.Maximized)
             {
                 this.WindowState = WindowState.Normal;
@@ -59,9 +60,9 @@ namespace VisibleConfusion
             }
         }
 
-        private void OnWindowStateChanged(object sender, EventArgs e)
+        private void Window_StateChanged(object sender, EventArgs e)
         {
-            this.RefreshMaximizeRestoreButton();
+            RefreshMaximizeRestoreButton();
         }
     }
 }

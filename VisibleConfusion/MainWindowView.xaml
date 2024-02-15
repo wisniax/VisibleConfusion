@@ -12,7 +12,8 @@
         MinHeight="100"
         Width="1000"
         WindowStyle="SingleBorderWindow"
-        Background="#111">
+        Background="#111"
+        StateChanged="Window_StateChanged">
 
     <Window.DataContext>
         <viewModel:MainWindowViewModel />
