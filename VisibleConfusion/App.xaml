@@ -22,6 +22,7 @@
                 <ResourceDictionary Source="Theme/SideBarRadioButton.xaml" />
                 <ResourceDictionary Source="Theme/Icons/restore.xaml" />
                 <ResourceDictionary Source="Theme/RadioButton.xaml" />
+                <ResourceDictionary Source="Theme/Icons/icon.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
 

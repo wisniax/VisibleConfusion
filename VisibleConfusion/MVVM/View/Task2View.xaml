@@ -12,7 +12,7 @@
     </UserControl.DataContext>
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
@@ -35,19 +35,18 @@
                             <ColumnDefinition Width="auto" />
                             <ColumnDefinition Width="auto" />
                             <ColumnDefinition Width="auto" />
-                            <ColumnDefinition Width="auto" />
                         </Grid.ColumnDefinitions>
-                        <Button Grid.Column="1"
+                        <Button Grid.Column="0"
                                 Command="{Binding FromFileCommand}">
                             Z pliku
                         </Button>
 
-                        <Button Grid.Column="2"
+                        <Button Grid.Column="1"
                                 IsEnabled="{Binding CameraButtonEnabled}"
                                 Command="{Binding FromCameraCommand}">
                             Kamera
                         </Button>
-                        <Button Grid.Column="3"
+                        <Button Grid.Column="2"
                                 Command="{Binding CleanCommand}">
                             Czyść
                         </Button>
@@ -60,9 +59,7 @@
                   HorizontalAlignment="Center">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto" />
-                    <RowDefinition Height="0.6*" />
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="0.4*" />
+                    <RowDefinition />
                 </Grid.RowDefinitions>
                 <Border Grid.Row="1"
                         BorderThickness="2"
@@ -115,7 +112,7 @@
                 </Border>
             </Grid>
         </DockPanel>
-        <Grid Grid.Column="1">
+        <Grid Grid.Column="1" VerticalAlignment="Center">
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto" />
                 <RowDefinition Height="auto" />
@@ -152,7 +149,7 @@
             </Grid>
             <Image Grid.Column="1"
                    Width="100"
-                   Height="100"></Image>
+                   Height="76"></Image>
             <Grid Grid.Row="0"
                   Grid.Column="2">
                 <Grid.RowDefinitions>
@@ -201,7 +198,7 @@
             <Image Grid.Column="1"
                    Grid.Row="1"
                    Width="100"
-                   Height="100"></Image>
+                   Height="76"></Image>
             <Grid Grid.Row="1"
                   Grid.Column="2">
                 <Grid.RowDefinitions>
@@ -250,7 +247,7 @@
             <Image Grid.Column="1"
                    Grid.Row="2"
                    Width="100"
-                   Height="100"></Image>
+                   Height="76"></Image>
             <Grid Grid.Row="2"
                   Grid.Column="2">
                 <Grid.RowDefinitions>
@@ -313,19 +310,18 @@
                             <ColumnDefinition Width="auto" />
                             <ColumnDefinition Width="auto" />
                             <ColumnDefinition Width="auto" />
-                            <ColumnDefinition Width="auto" />
                         </Grid.ColumnDefinitions>
-                        <Button Grid.Column="1"
+                        <Button Grid.Column="0"
                                 Command="{Binding FromFileCommand}">
                             Z pliku
                         </Button>
 
-                        <Button Grid.Column="2"
+                        <Button Grid.Column="1"
                                 IsEnabled="{Binding CameraButtonEnabled}"
                                 Command="{Binding FromCameraCommand}">
                             Kamera
                         </Button>
-                        <Button Grid.Column="3"
+                        <Button Grid.Column="2"
                                 Command="{Binding CleanCommand}">
                             Czyść
                         </Button>
@@ -338,9 +334,7 @@
                   HorizontalAlignment="Center">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto" />
-                    <RowDefinition Height="0.6*" />
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="0.4*" />
+                    <RowDefinition />
                 </Grid.RowDefinitions>
                 <Border Grid.Row="1"
                         BorderThickness="2"
@@ -393,9 +387,10 @@
                 </Border>
             </Grid>
         </DockPanel>
-        <Grid Grid.Row="1" Grid.ColumnSpan="3">
+        <Grid Grid.Row="1"
+              Grid.ColumnSpan="3">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto" />
             </Grid.ColumnDefinitions>
             <Grid>
                 <Grid.ColumnDefinitions>

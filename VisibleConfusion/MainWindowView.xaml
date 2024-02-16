@@ -34,17 +34,23 @@
                        Margin="1" />
             <Grid>
                 <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="Auto" />
                     <ColumnDefinition Width="Auto" />
                     <ColumnDefinition Width="Auto" />
                 </Grid.ColumnDefinitions>
+                <Control Margin="8,0" Style="{StaticResource AppIcon}"
+                         RenderTransformOrigin="1,1"
+                         Height="20"
+                         Width="20">
+                </Control>
                 <TextBlock Foreground="{StaticResource TextColor_1}"
-                           Grid.Column="0"
+                           Grid.Column="1"
                            HorizontalAlignment="Left"
                            Margin="8,0,0,0">Visible Confusion App</TextBlock>
                 <Button Style="{DynamicResource TitleBarButtons}"
-                        Grid.Column="1"
+                        Grid.Column="2"
                         Click="OnMinimizeButtonClick"
                         WindowChrome.IsHitTestVisibleInChrome="True">
                     <Control Style="{StaticResource MinimizeIcon}"
@@ -56,7 +62,7 @@
                 <Button  Name="restoreButton"
                          Click="OnMaximizeRestoreButtonClick"
                          Style="{DynamicResource TitleBarButtons}"
-                         Grid.Column="2"
+                         Grid.Column="3"
                          WindowChrome.IsHitTestVisibleInChrome="True">
                     <Control Style="{StaticResource RestoreIcon}"
                              RenderTransformOrigin="1,1"
@@ -67,7 +73,7 @@
                 <Button  Name="maximizeButton"
                          Click="OnMaximizeRestoreButtonClick"
                          Style="{DynamicResource TitleBarButtons}"
-                         Grid.Column="2"
+                         Grid.Column="3"
                          WindowChrome.IsHitTestVisibleInChrome="True">
                     <Control Style="{StaticResource MaximizeIcon}"
                              RenderTransformOrigin="1,1"
@@ -76,7 +82,7 @@
                     </Control>
                 </Button>
                 <Button  Style="{DynamicResource TitleBarButtons}"
-                         Grid.Column="3"
+                         Grid.Column="4"
                          Click="OnCloseButtonClick"
                          WindowChrome.IsHitTestVisibleInChrome="True"
                          Margin="0,0,4,0">
