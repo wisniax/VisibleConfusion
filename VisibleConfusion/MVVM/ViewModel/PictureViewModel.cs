@@ -22,30 +22,6 @@ namespace VisibleConfusion.MVVM.ViewModel
 {
 	internal class PictureViewModel : ObservableObject
 	{
-		//private BitmapSource? _pictureBitmapSource;
-
-		//public BitmapSource? PictureBitmapSource
-		//{
-		//	get => _pictureBitmapSource;
-		//	private set
-		//	{
-		//		_pictureBitmapSource = value;
-		//		OnPropertyChanged();
-		//	}
-		//}
-
-		//private BitmapSource? _graphBitmapSource;
-
-		//public BitmapSource? GraphBitmapSource
-		//{
-		//	get => _graphBitmapSource;
-		//	private set
-		//	{
-		//		_graphBitmapSource = value;
-		//		OnPropertyChanged();
-		//	}
-		//}
-
 		private PictureHandler _pictureHandler;
 		public Image<Rgb, byte>? CurrentFrame => _pictureHandler.CurrentFrame;
 

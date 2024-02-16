@@ -98,27 +98,35 @@
                             VerticalAlignment="Top">LUT</Button>
                     <Image Width="128"
                            Height="128"
-                           Grid.Column="1"></Image>
+						Source="{Binding LookUpTableBitmap}"
+                           Stretch="Fill"
+						Grid.Column="1"></Image>
                     <Button Grid.Column="2"
                             VerticalAlignment="Top">P2=T(P1)</Button>
                 </Grid>
                 <RadioButton Grid.Row="2"
+					Command="{Binding ButtonIdentityCommand}"
                              Margin="5"
                              HorizontalAlignment="Center"
                              IsChecked="True">Operacja tożsamościowa</RadioButton>
                 <RadioButton Grid.Row="3"
+					Command="{Binding ButtonNegativeCommand}"
                              Margin="5"
                              HorizontalAlignment="Center">Negatyw</RadioButton>
                 <RadioButton Grid.Row="4"
+							 Command="{Binding ButtonLightnessCommand}"
                              Margin="5"
                              HorizontalAlignment="Center">Jasność +/-: P1</RadioButton>
                 <RadioButton Grid.Row="5"
+							 Command="{Binding ButtonThresholdCommand}"
                              Margin="5"
                              HorizontalAlignment="Center">Progowanie: P1</RadioButton>
                 <RadioButton Grid.Row="6"
+							 Command="{Binding ButtonThreshold2PointsCommand}"
                              Margin="5"
                              HorizontalAlignment="Center">Progowanie: P1, P2</RadioButton>
                 <RadioButton Grid.Row="7"
+							 Command="{Binding ButtonContrastCommand}"
                              Margin="5"
                              HorizontalAlignment="Center">Kontrast: P1</RadioButton>
                 <Grid Grid.Row="8">
@@ -145,18 +153,20 @@
                             <RowDefinition />
                         </Grid.RowDefinitions>
                         <TextBlock Foreground="{StaticResource TextColor_1}">P1:</TextBlock>
-                        <xctk:IntegerUpDown Value="{Binding SelectedPixelPos.X, Mode=TwoWay}"
+                        <xctk:IntegerUpDown
                                             VerticalAlignment="Center"
                                             HorizontalAlignment="Center"
-                                            Minimum="0"
+                                            Minimum="-255"
                                             DefaultValue="0"
-                                            Maximum="{Binding MaxPixelPos.X}"
+											Value="0"
+                                            Maximum="255"
                                             ClipValueToMinMax="True"
                                             AllowSpin="True"
                                             Grid.Row="1">
                             <behaviors:Interaction.Triggers>
                                 <behaviors:EventTrigger EventName="ValueChanged">
-                                    <behaviors:InvokeCommandAction Command="{Binding OnNumericUpDownPixelPosChangedCommand}"
+									<behaviors:InvokeCommandAction
+										Command="{Binding OnNumericUpDownPoint1ChangedCommand}"
                                                                    PassEventArgsToCommand="True" />
                                 </behaviors:EventTrigger>
                             </behaviors:Interaction.Triggers>
@@ -168,18 +178,20 @@
                             <RowDefinition />
                         </Grid.RowDefinitions>
                         <TextBlock Foreground="{StaticResource TextColor_1}">P2:</TextBlock>
-                        <xctk:IntegerUpDown Value="{Binding SelectedPixelPos.X, Mode=TwoWay}"
+                        <xctk:IntegerUpDown
                                             VerticalAlignment="Center"
                                             HorizontalAlignment="Center"
                                             Minimum="0"
-                                            DefaultValue="0"
-                                            Maximum="{Binding MaxPixelPos.X}"
+                                            DefaultValue="127"
+											Value="127"
+                                            Maximum="255"
                                             ClipValueToMinMax="True"
                                             AllowSpin="True"
                                             Grid.Row="1">
                             <behaviors:Interaction.Triggers>
                                 <behaviors:EventTrigger EventName="ValueChanged">
-                                    <behaviors:InvokeCommandAction Command="{Binding OnNumericUpDownPixelPosChangedCommand}"
+									<behaviors:InvokeCommandAction
+										Command="{Binding OnNumericUpDownPoint2ChangedCommand}"
                                                                    PassEventArgsToCommand="True" />
                                 </behaviors:EventTrigger>
                             </behaviors:Interaction.Triggers>
