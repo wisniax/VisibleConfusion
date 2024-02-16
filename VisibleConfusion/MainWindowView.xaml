@@ -7,7 +7,7 @@
         xmlns:viewModel="clr-namespace:VisibleConfusion.MVVM.ViewModel"
         mc:Ignorable="d"
         Title="MainWindowView"
-        Height="550"
+        Height="580"
         MinWidth="900"
         MinHeight="100"
         Width="1000"
