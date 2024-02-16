@@ -79,9 +79,11 @@
                                 BorderBrush="{TemplateBinding BorderBrush}"
                                 BorderThickness="{TemplateBinding BorderThickness}"
                                 CornerRadius="100"
-                                HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                HorizontalAlignment="Center"
                                 Margin="1,1,1,1"
-                                VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
+                                VerticalAlignment="Center"
+                                Width="16"
+                                Height="16">
                             <Grid x:Name="markGrid"
                                   Margin="2">
                                 <Ellipse x:Name="optionMark"
@@ -96,11 +98,11 @@
                         <ContentPresenter x:Name="contentPresenter"
                                           Grid.Column="1"
                                           Focusable="False"
-                                          HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                          HorizontalAlignment="Center"
                                           Margin="{TemplateBinding Padding}"
                                           RecognizesAccessKey="True"
                                           SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
-                                          VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+                                          VerticalAlignment="Center" />
                     </Grid>
                     <ControlTemplate.Triggers>
                         <Trigger Property="HasContent"
@@ -153,6 +155,8 @@
                             <Setter Property="Opacity"
                                     TargetName="optionMark"
                                     Value="1" />
+                            <Setter Property="BorderThickness"
+                                    Value="0" />
                             <Setter Property="Background"
                                     TargetName="radioButtonBorder"
                                     Value="{StaticResource AccentColor}" />
