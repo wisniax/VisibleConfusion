@@ -155,7 +155,8 @@ namespace VisibleConfusion.MVVM.ViewModel
 
 			if (PictureBitmap == null || PictureBitmap.PixelWidth != picture.Width || PictureBitmap.PixelHeight != picture.Height)
 				PictureBitmap = new WriteableBitmap(picture.Width, picture.Height, 96, 96, PixelFormats.Rgb24, null);
-			PictureBitmap?.WritePixels(new Int32Rect(0, 0, picture.Width, picture.Height), picture.Bytes, picture.Width * 3, 0);
+			var rect = new Int32Rect(0, 0, picture.Width, picture.Height);
+			PictureBitmap?.WritePixels(rect, picture.Bytes, picture.Width * 3, 0);
 		}
 
 		private void SetWriteableGraphBitmap(Image<Rgb, byte>? picture)

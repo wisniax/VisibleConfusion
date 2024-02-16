@@ -115,7 +115,7 @@ namespace VisibleConfusion.MVVM.Model
 
 		private void CreateGraphFromFrame()
 		{
-			var tmp = new Image<Rgb, byte>(CurrentFrame?.Width ?? 1, 256, new Rgb(System.Drawing.Color.Black));
+			using var tmp = new Image<Rgb, byte>(CurrentFrame?.Width ?? 1, 256, new Rgb(System.Drawing.Color.Black));
 			var frameY = CurrentFrame?.Height / 2 ?? 0;
 
 			var color = GetPixelFromPos(new Point2D(0, frameY));
@@ -128,19 +128,25 @@ namespace VisibleConfusion.MVVM.Model
 				var gVal = 255 - color.G;
 				var bVal = 255 - color.B;
 
-				FillLineWithColor(ref tmp, x, rVal, lastRVal + 1, 0, System.Drawing.Color.Red.R);
-				FillLineWithColor(ref tmp, x, gVal, lastGVal + 1, 1, System.Drawing.Color.Lime.G);
-				FillLineWithColor(ref tmp, x, bVal, lastBVal + 1, 2, System.Drawing.Color.Blue.B);
+				FillLineWithColor(tmp, x, rVal, lastRVal + 1, 0, System.Drawing.Color.Red.R);
+				FillLineWithColor(tmp, x, gVal, lastGVal + 1, 1, System.Drawing.Color.Lime.G);
+				FillLineWithColor(tmp, x, bVal, lastBVal + 1, 2, System.Drawing.Color.Blue.B);
 
 				lastRVal = rVal;
 				lastGVal = gVal;
 				lastBVal = bVal;
 			}
 
-			CurrentGraph = tmp;
+			if (CurrentGraph?.Width != tmp.Width || CurrentGraph?.Height != tmp.Height)
+				CurrentGraph = tmp.Copy();
+			else
+			{
+				tmp.CopyTo(CurrentGraph);
+				OnGraphChanged();
+			}
 		}
 
-		private void FillLineWithColor(ref Image<Rgb, byte> image, int x, int yBegin, int yEnd, int z, byte val)
+		private void FillLineWithColor(Image<Rgb, byte> image, int x, int yBegin, int yEnd, int z, byte val)
 		{
 			if (yBegin > yEnd)
 				(yBegin, yEnd) = (yEnd, yBegin);
@@ -277,7 +283,7 @@ namespace VisibleConfusion.MVVM.Model
 				for (int j = 0; j < frame.Width; j++)
 				{
 					var color = frame[i, j];
-					color.Red =  Double.Clamp(color.Red, 0, filterColor.Red);
+					color.Red = Double.Clamp(color.Red, 0, filterColor.Red);
 					color.Green = Double.Clamp(color.Green, 0, filterColor.Green);
 					color.Blue = Double.Clamp(color.Blue, 0, filterColor.Blue);
 					frame[i, j] = color;
