@@ -214,5 +214,27 @@ namespace VisibleConfusion.MVVM.Model
 			NumericalUpDownLimitsChanged?.Invoke(NumericalUpDownLimits);
 		}
 
+		public Image<Rgb, byte>? ApplyLookUpTableTransformation(Image<Rgb, byte>? image, Rgb filterColor)
+		{
+			if (image?.Data == null || LookUpTable == null)
+				return null;
+
+			var result = image.Copy();
+
+			for (int i = 0; i < result.Height; i++)
+			{
+				for (int j = 0; j < result.Width; j++)
+				{
+					var pixel = result[i, j];
+					pixel.Red = LookUpTable[Convert.ToInt32(Double.Clamp((pixel.Red), 0, filterColor.Red))];
+					pixel.Green = LookUpTable[Convert.ToInt32(Double.Clamp((pixel.Green), 0, filterColor.Green))];
+					pixel.Blue = LookUpTable[Convert.ToInt32(Double.Clamp((pixel.Blue), 0, filterColor.Blue))];
+					result[i, j] = pixel;
+				}
+			}
+
+			return result;
+		}
+
 	}
 }

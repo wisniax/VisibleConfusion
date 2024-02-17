@@ -13,7 +13,9 @@
         Width="1000"
         WindowStyle="SingleBorderWindow"
         Background="#111"
-        StateChanged="Window_StateChanged">
+        SnapsToDevicePixels="True"
+        UseLayoutRounding="True"
+	StateChanged="Window_StateChanged">
 
     <Window.DataContext>
         <viewModel:MainWindowViewModel />

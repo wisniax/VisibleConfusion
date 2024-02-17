@@ -160,7 +160,8 @@
 					<Button
 						Grid.Column="0"
 						Grid.Row="1"
-						VerticalAlignment="Top">P2=T(P1)</Button>
+						VerticalAlignment="Top"
+						Command="{Binding DoLutTransformFromLeftToRightCommand}">P2=T(P1)</Button>
 				</Grid>
 				<RadioButton
 					Grid.Row="2"
@@ -207,13 +208,16 @@
 							<RowDefinition />
 						</Grid.RowDefinitions>
 						<CheckBox
-							HorizontalAlignment="Center">R</CheckBox>
+							HorizontalAlignment="Center"
+							IsChecked="{Binding SelectedFilter.Red}">R</CheckBox>
 						<CheckBox
 							HorizontalAlignment="Center"
-							Grid.Row="1">G</CheckBox>
+							Grid.Row="1"
+							IsChecked="{Binding SelectedFilter.Green}">G</CheckBox>
 						<CheckBox
 							HorizontalAlignment="Center"
-							Grid.Row="2">B</CheckBox>
+							Grid.Row="2"
+							IsChecked="{Binding SelectedFilter.Blue}">B</CheckBox>
 					</Grid>
 					<Grid
 						Grid.Column="1"

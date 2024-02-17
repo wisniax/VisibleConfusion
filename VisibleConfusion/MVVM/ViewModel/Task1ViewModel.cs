@@ -77,8 +77,9 @@ namespace VisibleConfusion.MVVM.ViewModel
 		public RelayCommand? ButtonThreshold2PointsCommand { get; private set; }
 		public RelayCommand? ButtonContrastCommand { get; private set; }
 
-		public RelayCommand? OnNumericUpDownPoint1ChangedCommand { get; set; }
-		public RelayCommand? OnNumericUpDownPoint2ChangedCommand { get; set; }
+		public RelayCommand? OnNumericUpDownPoint1ChangedCommand { get; private set; }
+		public RelayCommand? OnNumericUpDownPoint2ChangedCommand { get; private set; }
+		public RelayCommand? DoLutTransformFromLeftToRightCommand { get; private set; }
 
 		public LookUpTableTransforms.PointsLimits NumericalUpDownLimits => LookUpTableTransforms.NumericalUpDownLimits ?? new LookUpTableTransforms.PointsLimits();
 
@@ -117,6 +118,8 @@ namespace VisibleConfusion.MVVM.ViewModel
 				if (o is RoutedPropertyChangedEventArgs<object> rpc)
 					LookUpTableTransforms.Point2 = Convert.ToInt32(rpc.NewValue);
 			});
+
+			DoLutTransformFromLeftToRightCommand = new RelayCommand((o) => _rightPictureViewModel.SetPicture(LookUpTableTransforms.ApplyLookUpTableTransformation(_leftPictureViewModel?.CurrentFrame, SelectedFilterColor), null, null));
 		}
 
 		private void SetWriteableLutBitmap(Image<Rgb, byte>? picture)
