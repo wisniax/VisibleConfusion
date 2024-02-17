@@ -80,6 +80,8 @@ namespace VisibleConfusion.MVVM.ViewModel
 		public RelayCommand? OnNumericUpDownPoint1ChangedCommand { get; set; }
 		public RelayCommand? OnNumericUpDownPoint2ChangedCommand { get; set; }
 
+		public LookUpTableTransforms.PointsLimits NumericalUpDownLimits => LookUpTableTransforms.NumericalUpDownLimits ?? new LookUpTableTransforms.PointsLimits();
+
 
 		public Task1ViewModel()
 		{
@@ -90,6 +92,7 @@ namespace VisibleConfusion.MVVM.ViewModel
 			LookUpTableTransforms.SelectedTransformation = LookUpTableTransforms.Transformation.Identity;
 
 			LookUpTableTransforms.LutImageChanged += SetWriteableLutBitmap;
+			LookUpTableTransforms.NumericalUpDownLimitsChanged += (_) => OnPropertyChanged(nameof(NumericalUpDownLimits));
 
 			LeftToRightCommand = new RelayCommand((o) => _rightPictureViewModel.SetPicture(_leftPictureViewModel?.CurrentFrame ?? null, SelectedFilterColor, false));
 			RightToLeftCommand = new RelayCommand((o) => _leftPictureViewModel.SetPicture(_rightPictureViewModel?.CurrentFrame ?? null, SelectedFilterColor, false));

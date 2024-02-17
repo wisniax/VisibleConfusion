@@ -15,6 +15,7 @@ namespace VisibleConfusion.MVVM.Model
 		private Transformation _selectedTransformation;
 		private int _point1;
 		private int _point2;
+		private PointsLimits? _numericalUpDownLimits;
 
 		public enum Transformation
 		{
@@ -26,8 +27,31 @@ namespace VisibleConfusion.MVVM.Model
 			Contrast
 		}
 
+		public class PointsLimits
+		{
+			public int Point1Max { get; set; } = 255;
+			public int Point1Min { get; set; } = 0;
+			public bool Point1Visible { get; set; } = false;
+			public int Point2Max { get; set; } = 255;
+			public int Point2Min { get; set; } = 0;
+			public bool Point2Visible { get; set; } = false;
+		}
+
 		public delegate void ImageChangedEventHandler(Image<Rgb, byte>? sender);
 		public event ImageChangedEventHandler? LutImageChanged;
+
+		public delegate void PointsLimitChangedEventHandler(PointsLimits? pointsLimits);
+		public event PointsLimitChangedEventHandler? NumericalUpDownLimitsChanged;
+
+		public PointsLimits? NumericalUpDownLimits
+		{
+			get => _numericalUpDownLimits;
+			set
+			{
+				_numericalUpDownLimits = value;
+				OnNumericalUpDownLimitsChanged();
+			}
+		}
 
 		public Int32 Point1
 		{
@@ -68,6 +92,7 @@ namespace VisibleConfusion.MVVM.Model
 			_point1 = 0;
 			_point2 = 127;
 			LookUpTable = new byte[256];
+			_numericalUpDownLimits = new();
 
 			CurrentLutImage = new Image<Rgb, byte>(256, 256, new Rgb(Color.Black));
 		}
@@ -81,31 +106,64 @@ namespace VisibleConfusion.MVVM.Model
 					{
 						LookUpTable[i] = (byte)i;
 					}
+
+					NumericalUpDownLimits = new();
 					break;
+
 				case Transformation.Negative:
 					for (int i = 0; i < LookUpTable?.Length; i++)
 					{
 						LookUpTable[i] = (byte)(255 - i);
 					}
+
+					NumericalUpDownLimits = new();
 					break;
+
 				case Transformation.Lightness:
 					for (int i = 0; i < LookUpTable?.Length; i++)
 					{
 						LookUpTable[i] = (byte)Int64.Clamp(i + Point1, 0, 255);
 					}
+
+					NumericalUpDownLimits = new()
+					{
+						Point1Min = -255,
+						Point1Max = 255,
+						Point1Visible = true
+					};
 					break;
+
 				case Transformation.Threshold:
 					for (int i = 0; i < LookUpTable?.Length; i++)
 					{
 						LookUpTable[i] = (byte)(i < Point1 ? 0 : 255);
 					}
+
+					NumericalUpDownLimits = new()
+					{
+						Point1Min = 0,
+						Point1Max = 255,
+						Point1Visible = true
+					};
 					break;
+
 				case Transformation.Threshold2Points:
 					for (int i = 0; i < LookUpTable?.Length; i++)
 					{
 						LookUpTable[i] = (byte)(i < Point1 ? 0 : i < Point2 ? 255 : 0);
 					}
+
+					NumericalUpDownLimits = new()
+					{
+						Point1Min = 0,
+						Point1Max = 255,
+						Point1Visible = true,
+						Point2Min = Point1,
+						Point2Max = 255,
+						Point2Visible = true
+					};
 					break;
+
 				case Transformation.Contrast:
 					double factor = (259.0 * (Point1 + 255.0)) / (255.0 * (259.0 - Point1));
 
@@ -114,7 +172,14 @@ namespace VisibleConfusion.MVVM.Model
 						LookUpTable[i] = (byte)Int64.Clamp((int)(factor * (i - 128) + 128), 0, 255);
 					}
 
+					NumericalUpDownLimits = new()
+					{
+						Point1Min = -255,
+						Point1Max = 255,
+						Point1Visible = true
+					};
 					break;
+
 				default:
 					break;
 			}
@@ -143,6 +208,10 @@ namespace VisibleConfusion.MVVM.Model
 		private void OnImageChanged()
 		{
 			LutImageChanged?.Invoke(CurrentLutImage);
+		}
+		private void OnNumericalUpDownLimitsChanged()
+		{
+			NumericalUpDownLimitsChanged?.Invoke(NumericalUpDownLimits);
 		}
 
 	}

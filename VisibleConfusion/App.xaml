@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:VisibleConfusion"
              xmlns:view="clr-namespace:VisibleConfusion.MVVM.View"
+			 xmlns:converters="clr-namespace:VisibleConfusion.Converters"
              StartupUri="MainWindowView.xaml">
     <Application.Resources>
         <ResourceDictionary>
@@ -24,7 +25,8 @@
                 <ResourceDictionary Source="Theme/RadioButton.xaml" />
                 <ResourceDictionary Source="Theme/Icons/icon.xaml" />
             </ResourceDictionary.MergedDictionaries>
-        </ResourceDictionary>
-
+	        <converters:BoolToVisibility
+		        x:Key="BoolToVisibility" />
+		</ResourceDictionary>
     </Application.Resources>
 </Application>

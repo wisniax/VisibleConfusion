@@ -75,6 +75,7 @@ namespace VisibleConfusion.MVVM.Model
 				OnFrameChanged();
 			}
 		}
+
 		public DateTime LastFrameTimeStamp { get; private set; }
 
 
