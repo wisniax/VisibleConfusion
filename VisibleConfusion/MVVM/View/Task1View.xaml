@@ -6,7 +6,8 @@
              xmlns:local="clr-namespace:VisibleConfusion.MVVM.View"
              xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
              xmlns:viewModel="clr-namespace:VisibleConfusion.MVVM.ViewModel"
-             xmlns:behaviors="http://schemas.microsoft.com/xaml/behaviors">
+             xmlns:behaviors="http://schemas.microsoft.com/xaml/behaviors"
+             Tag="ShowBorderStyle">
     <UserControl.DataContext>
         <viewModel:Task1ViewModel />
     </UserControl.DataContext>
