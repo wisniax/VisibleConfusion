@@ -63,7 +63,8 @@
                     <RowDefinition />
                 </Grid.RowDefinitions>
                 <Button Grid.Row="0"
-                        Width="32">
+                        Width="32"
+                        Command="{Binding Bufor1ImageToLeftImageCommand}">
                     <Control Style="{StaticResource LeftArrow}"
                              RenderTransformOrigin="1,1"
                              Height="20"
@@ -71,7 +72,8 @@
                     </Control>
                 </Button>
                 <Button Grid.Row="1"
-                        Width="32">
+                        Width="32"
+                        Command="{Binding LeftImageToBufor1Command}">
                     <Control Style="{StaticResource RightArrow}"
                              RenderTransformOrigin="1,1"
                              Height="20"
@@ -90,7 +92,8 @@
                     <RowDefinition />
                 </Grid.RowDefinitions>
                 <Button Grid.Row="0"
-                        Width="32">
+                        Width="32"
+                        Command="{Binding Bufor1ImageToRightImageCommand}">
                     <Control Style="{StaticResource RightArrow}"
                              RenderTransformOrigin="1,1"
                              Height="20"
@@ -98,7 +101,8 @@
                     </Control>
                 </Button>
                 <Button Grid.Row="1"
-                        Width="32">
+                        Width="32"
+                        Command="{Binding RightImageToBufor1Command}">
                     <Control Style="{StaticResource LeftArrow}"
                              RenderTransformOrigin="1,1"
                              Height="20"
@@ -112,7 +116,8 @@
                     <RowDefinition />
                 </Grid.RowDefinitions>
                 <Button Grid.Row="0"
-                        Width="32">
+                        Width="32"
+                        Command="{Binding Bufor2ImageToLeftImageCommand}">
                     <Control Style="{StaticResource LeftArrow}"
                              RenderTransformOrigin="1,1"
                              Height="20"
@@ -120,7 +125,8 @@
                     </Control>
                 </Button>
                 <Button Grid.Row="1"
-                        Width="32">
+                        Width="32"
+                        Command="{Binding LeftImageToBufor2Command}">
                     <Control Style="{StaticResource RightArrow}"
                              RenderTransformOrigin="1,1"
                              Height="20"
@@ -139,7 +145,8 @@
                     <RowDefinition />
                 </Grid.RowDefinitions>
                 <Button Grid.Row="0"
-                        Width="32">
+                        Width="32"
+                        Command="{Binding Bufor2ImageToRightImageCommand}">
                     <Control Style="{StaticResource RightArrow}"
                              RenderTransformOrigin="1,1"
                              Height="20"
@@ -147,7 +154,8 @@
                     </Control>
                 </Button>
                 <Button Grid.Row="1"
-                        Width="32">
+                        Width="32"
+                        Command="{Binding RightImageToBufor2Command}">
                     <Control Style="{StaticResource LeftArrow}"
                              RenderTransformOrigin="1,1"
                              Height="20"
@@ -161,7 +169,8 @@
                     <RowDefinition />
                 </Grid.RowDefinitions>
                 <Button Grid.Row="0"
-                        Width="32">
+                        Width="32"
+                        Command="{Binding Bufor3ImageToLeftImageCommand}">
                     <Control Style="{StaticResource LeftArrow}"
                              RenderTransformOrigin="1,1"
                              Height="20"
@@ -169,7 +178,8 @@
                     </Control>
                 </Button>
                 <Button Grid.Row="1"
-                        Width="32">
+                        Width="32"
+                        Command="{Binding LeftImageToBufor3Command}">
                     <Control Style="{StaticResource RightArrow}"
                              RenderTransformOrigin="1,1"
                              Height="20"
@@ -188,7 +198,8 @@
                     <RowDefinition />
                 </Grid.RowDefinitions>
                 <Button Grid.Row="0"
-                        Width="32">
+                        Width="32"
+                        Command="{Binding Bufor3ImageToRightImageCommand}">
                     <Control Style="{StaticResource RightArrow}"
                              RenderTransformOrigin="1,1"
                              Height="20"
@@ -196,7 +207,8 @@
                     </Control>
                 </Button>
                 <Button Grid.Row="1"
-                        Width="32">
+                        Width="32"
+                        Command="{Binding RightImageToBufor3Command}">
                     <Control Style="{StaticResource LeftArrow}"
                              RenderTransformOrigin="1,1"
                              Height="20"
@@ -214,17 +226,21 @@
                 </Grid.ColumnDefinitions>
                 <RadioButton Margin="5"
                              HorizontalAlignment="Center"
-                             Grid.Column="0">AND</RadioButton>
+                             Grid.Column="0"
+                             Command="{Binding ButtonAndCommand}">AND</RadioButton>
                 <RadioButton  Margin="5"
                               HorizontalAlignment="Center"
-                              Grid.Column="1">OR</RadioButton>
+                              Grid.Column="1"
+                              Command="{Binding ButtonOrCommand}">OR</RadioButton>
                 <RadioButton  Margin="5"
                               HorizontalAlignment="Center"
-                              Grid.Column="2">XOR</RadioButton>
+                              Grid.Column="2"
+                              Command="{Binding ButtonXorCommand}">XOR</RadioButton>
             </Grid>
             <Button Grid.Row="5"
                     Width="200"
-                    Grid.ColumnSpan="3">
+                    Grid.ColumnSpan="3"
+                    Command="{Binding ButtonDoBitwiseOperationToBuf3}">
                 buf3 = buf1 &lt;oper> buf2
             </Button>
         </Grid>

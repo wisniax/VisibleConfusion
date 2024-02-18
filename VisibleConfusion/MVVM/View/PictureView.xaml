@@ -44,7 +44,6 @@
                     <Setter Property="Visibility"
                             Value="Collapsed" />
                 </DataTrigger>
-
             </Style.Triggers>
         </Style>
     </UserControl.Resources>
@@ -94,7 +93,6 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="0.6*" />
-                <RowDefinition Height="Auto" />
                 <RowDefinition Height="0.4*" />
             </Grid.RowDefinitions>
             <Grid Grid.Row="0"
