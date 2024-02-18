@@ -7,7 +7,7 @@
              xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
              xmlns:viewModel="clr-namespace:VisibleConfusion.MVVM.ViewModel"
              xmlns:behaviors="http://schemas.microsoft.com/xaml/behaviors"
-             Tag="HideBorderStyle">
+             Tag="ShowBorderStyle">
     <UserControl.DataContext>
         <viewModel:Task2ViewModel/>
     </UserControl.DataContext>

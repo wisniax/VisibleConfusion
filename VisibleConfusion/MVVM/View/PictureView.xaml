@@ -95,8 +95,8 @@
               HorizontalAlignment="Center">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
-                <RowDefinition />
-                <RowDefinition Height="Auto" MaxHeight="160"/>
+                <RowDefinition Height="0.6*"/>
+                <RowDefinition Height="0.4*"/>
             </Grid.RowDefinitions>
             <Grid Grid.Row="0"
                   HorizontalAlignment="Center">
