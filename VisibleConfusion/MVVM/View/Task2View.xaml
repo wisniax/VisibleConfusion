@@ -280,25 +280,35 @@
                 </Grid.RowDefinitions>
                 <xctk:IntegerUpDown Grid.Column="0"
                                     Grid.Row="0"
+					Value="{Binding NumUpDownElem11}"
                                     ></xctk:IntegerUpDown>
                 <xctk:IntegerUpDown Grid.Column="1"
-                                    Grid.Row="0"></xctk:IntegerUpDown>
+                                    Value="{Binding NumUpDownElem12}"
+					Grid.Row="0"></xctk:IntegerUpDown>
                 <xctk:IntegerUpDown Grid.Column="2"
-                                    Grid.Row="0"></xctk:IntegerUpDown>
+                                    Value="{Binding NumUpDownElem13}"
+					Grid.Row="0"></xctk:IntegerUpDown>
                 <xctk:IntegerUpDown Grid.Column="0"
-                                    Grid.Row="1"></xctk:IntegerUpDown>
+                                    Value="{Binding NumUpDownElem21}"
+					Grid.Row="1"></xctk:IntegerUpDown>
                 <xctk:IntegerUpDown Grid.Column="0"
-                                    Grid.Row="2"></xctk:IntegerUpDown>
+                                    Value="{Binding NumUpDownElem31}"
+					Grid.Row="2"></xctk:IntegerUpDown>
                 <xctk:IntegerUpDown Grid.Column="1"
-                                    Grid.Row="1"></xctk:IntegerUpDown>
+                                    Value="{Binding NumUpDownElem22}"
+					Grid.Row="1"></xctk:IntegerUpDown>
                 <xctk:IntegerUpDown Grid.Column="1"
-                                    Grid.Row="2"></xctk:IntegerUpDown>
+                                    Value="{Binding NumUpDownElem32}"
+					Grid.Row="2"></xctk:IntegerUpDown>
                 <xctk:IntegerUpDown Grid.Column="2"
-                                    Grid.Row="1"></xctk:IntegerUpDown>
+                                    Value="{Binding NumUpDownElem23}"
+					Grid.Row="1"></xctk:IntegerUpDown>
                 <xctk:IntegerUpDown Grid.Column="2"
-                                    Grid.Row="2"></xctk:IntegerUpDown>
+                                    Value="{Binding NumUpDownElem33}"
+					Grid.Row="2"></xctk:IntegerUpDown>
                 <Button Width="125"
                         Grid.Row="3"
+					Command="{Binding ButtonFiltrateCommand}"
                         Grid.ColumnSpan="3">Filtruj</Button>
             </Grid>
             <WrapPanel Grid.Row="1"
@@ -306,10 +316,14 @@
                        MaxWidth="300"
                        HorizontalAlignment="Center"
                        VerticalAlignment="Center">
-                <Button Width="125">Dolnoprzepustowy</Button>
-                <Button Width="125">Górnoprzepustowy</Button>
-                <Button Width="125">Dylatacja</Button>
-                <Button Width="125">Erozja</Button>
+                <Button Width="125"
+                        Command="{Binding ButtonLowPassCommand}">Dolnoprzepustowy</Button>
+                <Button Width="125" 
+                        Command="{Binding ButtonHighPassCommand}">Górnoprzepustowy</Button>
+                <Button Width="125"
+                        Command="{Binding ButtonDilatationCommand}">Dylatacja</Button>
+                <Button Width="125"
+                        Command="{Binding ButtonErosionCommand}">Erozja</Button>
             </WrapPanel>
         </Grid>
     </Grid>
