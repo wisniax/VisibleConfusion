@@ -9,7 +9,7 @@
              xmlns:behaviors="http://schemas.microsoft.com/xaml/behaviors"
              Tag="HideBorderStyle">
     <UserControl.DataContext>
-        <viewModel:PictureViewModel/>
+        <viewModel:Task2ViewModel/>
     </UserControl.DataContext>
     <UserControl.Resources>
         <Style TargetType="{x:Type xctk:IntegerUpDown}">
@@ -37,7 +37,8 @@
             <ColumnDefinition Width="auto" />
             <ColumnDefinition Width="1.5*" />
         </Grid.ColumnDefinitions>
-        <local:PictureView Grid.Column="0"/>
+        <local:PictureView Grid.Column="0"
+			DataContext="{Binding LeftPictureViewModel}"/>
         <Grid Grid.Column="1"
               VerticalAlignment="Center">
             <Grid.RowDefinitions>
@@ -82,9 +83,11 @@
                 </Button>
             </Grid>
             <Image Grid.Column="1"
-                   Grid.Row="1"
-                   Width="100"
-                   Height="76"></Image>
+				Stretch="Fill"
+				Grid.Row="1"
+				Width="100"
+                   Height="76"
+                   Source="{Binding Buffor1Bitmap}"></Image>
             <Grid Grid.Row="1"
                   Grid.Column="2">
                 <Grid.RowDefinitions>
@@ -135,9 +138,11 @@
                 </Button>
             </Grid>
             <Image Grid.Column="1"
-                   Grid.Row="2"
-                   Width="100"
-                   Height="76"></Image>
+				Stretch="Fill"
+				Grid.Row="2"
+				Width="100"
+                   Height="76"
+                   Source="{Binding Buffor2Bitmap}"></Image>
             <Grid Grid.Row="2"
                   Grid.Column="2">
                 <Grid.RowDefinitions>
@@ -188,9 +193,11 @@
                 </Button>
             </Grid>
             <Image Grid.Column="1"
+				   Stretch="Fill"
                    Grid.Row="3"
                    Width="100"
-                   Height="76"></Image>
+                   Height="76"
+                   Source="{Binding Buffor3Bitmap}"></Image>
             <Grid Grid.Row="3"
                   Grid.Column="2">
                 <Grid.RowDefinitions>
@@ -227,6 +234,7 @@
                 <RadioButton Margin="5"
                              HorizontalAlignment="Center"
                              Grid.Column="0"
+							 IsChecked="True"
                              Command="{Binding ButtonAndCommand}">AND</RadioButton>
                 <RadioButton  Margin="5"
                               HorizontalAlignment="Center"
@@ -244,7 +252,8 @@
                 buf3 = buf1 &lt;oper> buf2
             </Button>
         </Grid>
-        <local:PictureView Grid.Column="2"/>
+        <local:PictureView Grid.Column="2"
+			DataContext="{Binding RightPictureViewModel}"/>
         <Grid Grid.Row="1"
               Grid.ColumnSpan="3">
             <Grid.ColumnDefinitions>

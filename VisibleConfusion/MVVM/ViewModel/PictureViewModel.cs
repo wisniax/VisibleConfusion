@@ -24,6 +24,7 @@ namespace VisibleConfusion.MVVM.ViewModel
 	{
 		private PictureHandler _pictureHandler;
 		public Image<Rgb, byte>? CurrentFrame => _pictureHandler.CurrentFrame;
+		public PictureHandler LocalPictureHandler => _pictureHandler;
 
 		public RelayCommand? DrawByHandCommand { get; set; }
 		public RelayCommand? FromFileCommand { get; set; }
@@ -34,6 +35,7 @@ namespace VisibleConfusion.MVVM.ViewModel
 		public RelayCommand? OnMouseLeftButtonDownOnPictureCommand { get; set; }
 		public RelayCommand? OnMouseMoveOnPictureCommand { get; set; }
 		public RelayCommand? OnNumericUpDownPixelPosChangedCommand { get; set; }
+		public RelayCommand? ZoomInCommand { get; private set; }
 
 		private PictureHandler.Point2D _selectedPixelPos;
 
@@ -146,6 +148,7 @@ namespace VisibleConfusion.MVVM.ViewModel
 			OnMouseLeftButtonDownOnPictureCommand = new RelayCommand(MouseLeftButtonDownOnPicture);
 			OnMouseMoveOnPictureCommand = new RelayCommand(MouseMoveOnPicture);
 			OnNumericUpDownPixelPosChangedCommand = new RelayCommand((o) => OnSelectedPixelPosChanged());
+			ZoomInCommand = new RelayCommand((o) => _pictureHandler.ZoomIn(SelectedPixelPos));
 
 			CameraButtonEnabled = true;
 		}
@@ -228,6 +231,14 @@ namespace VisibleConfusion.MVVM.ViewModel
 		private async void GetFrameFromCamera(object obj)
 		{
 			CameraButtonEnabled = false;
+
+			if (_pictureHandler.IsCaptureRunning)
+			{
+				await _pictureHandler.ToggleCameraFeedAsync();
+				CameraButtonEnabled = true;
+				return;
+			}
+
 			if (!(await _pictureHandler.ToggleCameraFeedAsync()))
 				SetPicture(Properties.Resources.cameraWhere.ToImage<Rgb, byte>(), null, null);
 			else
@@ -235,6 +246,7 @@ namespace VisibleConfusion.MVVM.ViewModel
 				await Task.Delay(100);
 				await _pictureHandler.ToggleCameraFeedAsync();
 			}
+
 			CameraButtonEnabled = true;
 		}
 

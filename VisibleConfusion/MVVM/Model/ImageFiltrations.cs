@@ -61,11 +61,11 @@ namespace VisibleConfusion.MVVM.Model
 			OnImagesChanged();
 		}
 
-		public void LoadImage(ViewPoint viewPoint, Image<Rgb, byte> image)
+		public void LoadImage(ViewPoint viewPoint, Image<Rgb, byte>? image)
 		{
 			if (Images.ContainsKey(viewPoint))
 				Images[viewPoint]?.Dispose();
-			Images[viewPoint] = image.Copy();
+			Images[viewPoint] = image?.Copy();
 			OnImagesChanged();
 		}
 
@@ -189,22 +189,19 @@ namespace VisibleConfusion.MVVM.Model
 			}
 		}
 
-		public void DoFiltration(Int32[,] matrix)
+		public Image<Rgb, byte>? DoFiltration(Int32[,] matrix)
 		{
 			if (!Images.ContainsKey(ViewPoint.LeftImage))
-				return;
+				return null;
 
 			if (Images[ViewPoint.LeftImage] == null)
-				return;
+				return null;
 
-			if (Images.ContainsKey(ViewPoint.RightImage))
-				Images[ViewPoint.RightImage]?.Dispose();
+			var img = new Image<Rgb, byte>(Images[ViewPoint.LeftImage]?.Width - 2 ?? 1, Images[ViewPoint.LeftImage]?.Height - 2 ?? 1);
 
-			Images[ViewPoint.RightImage] = new Image<Rgb, byte>(Images[ViewPoint.LeftImage]?.Width - 2 ?? 1, Images[ViewPoint.LeftImage]?.Height - 2 ?? 1);
-
-			for (int i = 1; i < Images[ViewPoint.RightImage]!.Height; i++)
+			for (int i = 1; i < img.Height; i++)
 			{
-				for (int j = 1; j < Images[ViewPoint.RightImage]!.Width; j++)
+				for (int j = 1; j < img.Width; j++)
 				{
 					Rgb color = new Rgb();
 
@@ -218,9 +215,11 @@ namespace VisibleConfusion.MVVM.Model
 						}
 					}
 
-					Images[ViewPoint.RightImage]![i - 1, j - 1] = color;
+					img[i - 1, j - 1] = color;
 				}
 			}
+
+			return img;
 		}
 
 		public void OnImagesChanged()
