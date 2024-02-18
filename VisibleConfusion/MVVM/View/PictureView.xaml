@@ -210,21 +210,6 @@
                     </DockPanel>
                 </Grid>
             </Border>
-            <Grid Grid.Row="2"
-                  HorizontalAlignment="Center">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto" />
-                    <ColumnDefinition Width="Auto" />
-                </Grid.ColumnDefinitions>
-
-
-                <!--<Button
-					Grid.Column="1"
-					Command="{Binding DoGraphCommand}">
-					Wykres
-				</Button>-->
-            </Grid>
-
             <Border Grid.Row="3"
                     BorderThickness="2"
                     Width="Auto"
