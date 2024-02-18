@@ -28,6 +28,7 @@ namespace VisibleConfusion.MVVM.ViewModel
 		public RelayCommand? DrawByHandCommand { get; set; }
 		public RelayCommand? FromFileCommand { get; set; }
 		public RelayCommand? FromCameraCommand { get; set; }
+		public RelayCommand? GetFrameFromCameraCommand { get; private set; }
 		public RelayCommand? CleanCommand { get; set; }
 		public RelayCommand? DoGraphCommand { get; set; }
 		public RelayCommand? OnMouseLeftButtonDownOnPictureCommand { get; set; }
@@ -139,6 +140,7 @@ namespace VisibleConfusion.MVVM.ViewModel
 			DrawByHandCommand = new RelayCommand((o) => DrawingByHandEnabled = !DrawingByHandEnabled);
 			FromFileCommand = new RelayCommand(FromFile);
 			FromCameraCommand = new RelayCommand(FromCamera);
+			GetFrameFromCameraCommand = new RelayCommand(GetFrameFromCamera);
 			CleanCommand = new RelayCommand((o) => _pictureHandler.ClearFrame());
 			DoGraphCommand = new RelayCommand((o) => throw new NotImplementedException());
 			OnMouseLeftButtonDownOnPictureCommand = new RelayCommand(MouseLeftButtonDownOnPicture);
@@ -221,6 +223,18 @@ namespace VisibleConfusion.MVVM.ViewModel
 			CameraButtonEnabled = false;
 			if (!(await _pictureHandler.ToggleCameraFeedAsync()))
 				SetPicture(Properties.Resources.cameraWhere.ToImage<Rgb, byte>(), null, null);
+			CameraButtonEnabled = true;
+		}
+		private async void GetFrameFromCamera(object obj)
+		{
+			CameraButtonEnabled = false;
+			if (!(await _pictureHandler.ToggleCameraFeedAsync()))
+				SetPicture(Properties.Resources.cameraWhere.ToImage<Rgb, byte>(), null, null);
+			else
+			{
+				await Task.Delay(100);
+				await _pictureHandler.ToggleCameraFeedAsync();
+			}
 			CameraButtonEnabled = true;
 		}
 
