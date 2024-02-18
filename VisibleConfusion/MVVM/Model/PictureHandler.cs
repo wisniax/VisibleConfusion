@@ -298,20 +298,20 @@ namespace VisibleConfusion.MVVM.Model
 			var newWidth = Convert.ToInt32(CurrentFrame?.Width * (0.25f));
 			var newHeight = Convert.ToInt32(CurrentFrame?.Height * (0.25f));
 
-			if (point.X + newWidth / 2 > CurrentFrame?.Width)
-				point.X = CurrentFrame.Width - newWidth / 2;
+			if (point.X + newWidth / 2 >= CurrentFrame?.Width)
+				point.X = CurrentFrame.Width - newWidth / 2 - 1;
 			if (point.X - newWidth / 2 < 0)
 				point.X = newWidth / 2;
-			if (point.Y + newHeight / 2 > CurrentFrame?.Height)
-				point.Y = CurrentFrame.Height - newHeight / 2;
+			if (point.Y + newHeight / 2 >= CurrentFrame?.Height)
+				point.Y = CurrentFrame.Height - newHeight / 2 - 1;
 			if (point.Y - newHeight / 2 < 0)
 				point.Y = newHeight / 2;
 
-			var newFrame = new Image<Rgb, byte>(newWidth, newHeight);
+			var newFrame = new Image<Rgb, byte>(newWidth + 1, newHeight + 1);
 
-			for (int i = 0; i < point.Y; i++)
+			for (int i = 0; i < newFrame.Height; i++)
 			{
-				for (int j = 0; j < point.X; j++)
+				for (int j = 0; j < newFrame.Width; j++)
 				{
 					newFrame[i, j] = CurrentFrame![point.Y + i - newHeight / 2, point.X + j - newWidth / 2];
 				}

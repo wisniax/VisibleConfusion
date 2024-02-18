@@ -158,10 +158,10 @@ namespace VisibleConfusion.MVVM.ViewModel
 			if (picture?.Data == null)
 				return;
 
-			if (PictureBitmap == null || PictureBitmap.PixelWidth != picture.Width || PictureBitmap.PixelHeight != picture.Height)
-				PictureBitmap = new WriteableBitmap(picture.Width, picture.Height, 96, 96, PixelFormats.Rgb24, null);
-			var rect = new Int32Rect(0, 0, picture.Width, picture.Height);
-			PictureBitmap?.WritePixels(rect, picture.Bytes, picture.Width * 3, 0);
+			// if (PictureBitmap == null || PictureBitmap.PixelWidth != picture.Width || PictureBitmap.PixelHeight != picture.Height || !Equals(_lastFrameType, picture.GetType()))
+			PictureBitmap = new WriteableBitmap(picture.ToBitmapSource());
+			// else
+			//PictureBitmap?.WritePixels(new Int32Rect(0, 0, picture.Width, picture.Height), picture.Bytes, picture.Width * 3, 0);
 		}
 
 		private void SetWriteableGraphBitmap(Image<Rgb, byte>? picture)
@@ -169,9 +169,10 @@ namespace VisibleConfusion.MVVM.ViewModel
 			if (picture?.Data == null)
 				return;
 
-			if (GraphBitmap == null || GraphBitmap.PixelWidth != picture.Width || GraphBitmap.PixelHeight != picture.Height)
-				GraphBitmap = new WriteableBitmap(picture.Width, picture.Height, 96, 96, PixelFormats.Rgb24, null);
-			GraphBitmap?.WritePixels(new Int32Rect(0, 0, picture.Width, picture.Height), picture.Bytes, picture.Width * 3, 0);
+			// if (GraphBitmap == null || GraphBitmap.PixelWidth != picture.Width || GraphBitmap.PixelHeight != picture.Height)
+			GraphBitmap = new WriteableBitmap(picture.ToBitmapSource());
+			// else
+			// 	GraphBitmap?.WritePixels(new Int32Rect(0, 0, picture.Width, picture.Height), picture.Bytes, picture.Width * 3, 0);
 		}
 
 		public void SetPicture(Image<Rgb, byte>? picture, Rgb? filterColor, bool? toGrayscale)

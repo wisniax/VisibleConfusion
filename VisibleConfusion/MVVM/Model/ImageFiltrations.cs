@@ -197,6 +197,8 @@ namespace VisibleConfusion.MVVM.Model
 			if (Images[ViewPoint.LeftImage] == null)
 				return null;
 
+			Int32 matrixSum = matrix.Cast<int>().Sum() == 0 ? 1 : matrix.Cast<int>().Sum();
+
 			var img = new Image<Rgb, byte>(Images[ViewPoint.LeftImage]?.Width - 2 ?? 1, Images[ViewPoint.LeftImage]?.Height - 2 ?? 1);
 
 			for (int i = 1; i < img.Height; i++)
@@ -209,11 +211,15 @@ namespace VisibleConfusion.MVVM.Model
 					{
 						for (int l = -1; l < 2; l++)
 						{
-							color.Red += (byte)(Images[ViewPoint.LeftImage]![i + k, j + l].Red * matrix[k + 1, l + 1]);
-							color.Green += (byte)(Images[ViewPoint.LeftImage]![i + k, j + l].Green * matrix[k + 1, l + 1]);
-							color.Blue += (byte)(Images[ViewPoint.LeftImage]![i + k, j + l].Blue * matrix[k + 1, l + 1]);
+							color.Red += (Images[ViewPoint.LeftImage]![i + k, j + l].Red * matrix[k + 1, l + 1]);
+							color.Green += (Images[ViewPoint.LeftImage]![i + k, j + l].Green * matrix[k + 1, l + 1]);
+							color.Blue += (Images[ViewPoint.LeftImage]![i + k, j + l].Blue * matrix[k + 1, l + 1]);
 						}
 					}
+
+					color.Red /= matrixSum;
+					color.Green /= matrixSum;
+					color.Blue /= matrixSum;
 
 					img[i - 1, j - 1] = color;
 				}
