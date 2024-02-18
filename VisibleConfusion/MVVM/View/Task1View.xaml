@@ -62,7 +62,8 @@
                              Width="20">
                     </Control>
                 </Button>
-                <Button Grid.Row="5">Mono</Button>
+                <Button Grid.Row="5"
+					Command="{Binding LeftToRightMonoCommand}">Mono</Button>
             </Grid>
 
         </DockPanel>

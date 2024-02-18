@@ -48,8 +48,9 @@ namespace VisibleConfusion.MVVM.ViewModel
 
 		public LookUpTableTransforms LookUpTableTransforms { get; private set; }
 
-		public RelayCommand? LeftToRightCommand { get; set; }
-		public RelayCommand? RightToLeftCommand { get; set; }
+		public RelayCommand? LeftToRightCommand { get; private set; }
+		public RelayCommand? RightToLeftCommand { get; private set; }
+		public RelayCommand? LeftToRightMonoCommand { get; private set; }
 
 		public WriteableBitmap? LookUpTableBitmap
 		{
@@ -97,6 +98,7 @@ namespace VisibleConfusion.MVVM.ViewModel
 
 			LeftToRightCommand = new RelayCommand((o) => _rightPictureViewModel.SetPicture(_leftPictureViewModel?.CurrentFrame ?? null, SelectedFilterColor, false));
 			RightToLeftCommand = new RelayCommand((o) => _leftPictureViewModel.SetPicture(_rightPictureViewModel?.CurrentFrame ?? null, SelectedFilterColor, false));
+			LeftToRightMonoCommand = new RelayCommand((o) => _rightPictureViewModel.SetPicture(_leftPictureViewModel?.CurrentFrame ?? null, SelectedFilterColor, true));
 
 			SetWriteableLutBitmap(LookUpTableTransforms.CurrentLutImage);
 

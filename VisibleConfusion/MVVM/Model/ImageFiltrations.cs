@@ -66,7 +66,6 @@ namespace VisibleConfusion.MVVM.Model
 			if (Images.ContainsKey(viewPoint))
 				Images[viewPoint]?.Dispose();
 			Images[viewPoint] = image.Copy();
-			image.Av
 			OnImagesChanged();
 		}
 

@@ -257,10 +257,7 @@ namespace VisibleConfusion.MVVM.Model
 
 		public void SetFrame(Image<Rgb, byte> frame, Rgb filterColor, bool toGrayscale = false)
 		{
-			if (toGrayscale)
-				CurrentFrame = ToGrayscale(frame);
-			else
-				CurrentFrame = OnlyPassColor(frame, filterColor);
+			CurrentFrame = toGrayscale ? ToGrayscale(frame) : OnlyPassColor(frame, filterColor);
 		}
 
 		private Image<Rgb, byte> ToGrayscale(Image<Rgb, byte> frame)
