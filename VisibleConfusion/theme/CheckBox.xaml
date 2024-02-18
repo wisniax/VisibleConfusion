@@ -160,12 +160,6 @@
                         </Trigger>
                         <Trigger Property="IsChecked"
                                  Value="true">
-                            <Setter Property="Height"
-                                    TargetName="checkBoxBorder"
-                                    Value="14" />
-                            <Setter Property="Width"
-                                    TargetName="checkBoxBorder"
-                                    Value="14" />
                             <Setter Property="Background"
                                     TargetName="checkBoxBorder"
                                     Value="{StaticResource AccentColor}" />
@@ -174,10 +168,10 @@
                                     Value="{StaticResource AccentColor}" />
                             <Setter Property="BorderThickness"
                                     TargetName="checkBoxBorder"
-                                    Value="0" />
+                                    Value="1" />
                             <Setter Property="Padding"
                                     TargetName="checkBoxBorder"
-                                    Value="1.75" />
+                                    Value="1" />
                             <Setter Property="Opacity"
                                     TargetName="optionMark"
                                     Value="1" />
