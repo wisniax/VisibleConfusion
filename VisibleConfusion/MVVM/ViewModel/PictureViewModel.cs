@@ -228,6 +228,14 @@ namespace VisibleConfusion.MVVM.ViewModel
 		private async void GetFrameFromCamera(object obj)
 		{
 			CameraButtonEnabled = false;
+
+			if (_pictureHandler.IsCaptureRunning)
+			{
+				await _pictureHandler.ToggleCameraFeedAsync();
+				CameraButtonEnabled = true;
+				return;
+			}
+
 			if (!(await _pictureHandler.ToggleCameraFeedAsync()))
 				SetPicture(Properties.Resources.cameraWhere.ToImage<Rgb, byte>(), null, null);
 			else
@@ -235,6 +243,7 @@ namespace VisibleConfusion.MVVM.ViewModel
 				await Task.Delay(100);
 				await _pictureHandler.ToggleCameraFeedAsync();
 			}
+
 			CameraButtonEnabled = true;
 		}
 
