@@ -25,7 +25,8 @@
                 Background="{StaticResource ForegroundColor}"
                 CornerRadius="10"
                 Margin="70,15"
-                Padding="0,0,0,5">
+                Padding="0,0,0,5"
+                Effect="{StaticResource dropShadow}">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="auto" />
@@ -50,7 +51,8 @@
                 Background="{StaticResource ForegroundColor}"
                 CornerRadius="10"
                 Margin="70,15"
-                Padding="0,0,0,5">
+                Padding="0,0,0,5"
+                Effect="{StaticResource dropShadow}">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="auto" />

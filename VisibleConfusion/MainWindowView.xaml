@@ -23,7 +23,7 @@
     <WindowChrome.WindowChrome>
         <WindowChrome GlassFrameThickness="0"
                       UseAeroCaptionButtons="False"
-                      ResizeBorderThickness="5" />
+                      ResizeBorderThickness="9" />
     </WindowChrome.WindowChrome>
     <Grid Margin="5">
         <Grid.RowDefinitions>
