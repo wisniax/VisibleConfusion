@@ -172,6 +172,8 @@
                             <Setter Property="Padding"
                                     TargetName="checkBoxBorder"
                                     Value="2" />
+                            <Setter Property="Padding"
+                                    Value="3,-0.5,0,0" />
                             <Setter Property="Opacity"
                                     TargetName="optionMark"
                                     Value="1" />

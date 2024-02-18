@@ -434,15 +434,15 @@
                                     Grid.Row="1"></xctk:IntegerUpDown>
                 <xctk:IntegerUpDown Grid.Column="2"
                                     Grid.Row="2"></xctk:IntegerUpDown>
-                <Button Width="125" Grid.Row="3" Grid.ColumnSpan="2">Filtruj</Button>
-                <CheckBox Grid.Row="3" Grid.Column="3">Dodaj</CheckBox>
+                <Button Width="125"
+                        Grid.Row="3"
+                        Grid.ColumnSpan="3">Filtruj</Button>
             </Grid>
             <WrapPanel Grid.Row="1" Grid.Column="1" MaxWidth="300" HorizontalAlignment="Center" VerticalAlignment="Center">
                 <Button Width="125">Dolnoprzepustowy</Button>
                 <Button Width="125">Górnoprzepustowy</Button>
                 <Button Width="125">Dylatacja</Button>
                 <Button Width="125">Erozja</Button>
-                <Button Width="125">Progowanie</Button>
             </WrapPanel>
         </Grid>
 
