@@ -34,6 +34,7 @@ namespace VisibleConfusion.MVVM.ViewModel
 		public RelayCommand? OnMouseLeftButtonDownOnPictureCommand { get; set; }
 		public RelayCommand? OnMouseMoveOnPictureCommand { get; set; }
 		public RelayCommand? OnNumericUpDownPixelPosChangedCommand { get; set; }
+		public RelayCommand? ZoomInCommand { get; private set; }
 
 		private PictureHandler.Point2D _selectedPixelPos;
 
@@ -146,6 +147,7 @@ namespace VisibleConfusion.MVVM.ViewModel
 			OnMouseLeftButtonDownOnPictureCommand = new RelayCommand(MouseLeftButtonDownOnPicture);
 			OnMouseMoveOnPictureCommand = new RelayCommand(MouseMoveOnPicture);
 			OnNumericUpDownPixelPosChangedCommand = new RelayCommand((o) => OnSelectedPixelPosChanged());
+			ZoomInCommand = new RelayCommand((o) => _pictureHandler.ZoomIn(SelectedPixelPos));
 
 			CameraButtonEnabled = true;
 		}
