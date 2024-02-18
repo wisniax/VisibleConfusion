@@ -24,6 +24,7 @@ namespace VisibleConfusion.MVVM.ViewModel
 	{
 		private PictureHandler _pictureHandler;
 		public Image<Rgb, byte>? CurrentFrame => _pictureHandler.CurrentFrame;
+		public PictureHandler LocalPictureHandler => _pictureHandler;
 
 		public RelayCommand? DrawByHandCommand { get; set; }
 		public RelayCommand? FromFileCommand { get; set; }
