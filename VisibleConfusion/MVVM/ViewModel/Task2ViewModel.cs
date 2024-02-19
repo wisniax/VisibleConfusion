@@ -296,10 +296,7 @@ namespace VisibleConfusion.MVVM.ViewModel
 			if (picture?.Data == null)
 				return;
 
-			if (Buffor1Bitmap == null || Buffor1Bitmap.PixelWidth != picture.Width || Buffor1Bitmap.PixelHeight != picture.Height)
-				Buffor1Bitmap = new WriteableBitmap(picture.Width, picture.Height, 96, 96, PixelFormats.Rgb24, null);
-			var rect = new Int32Rect(0, 0, picture.Width, picture.Height);
-			Buffor1Bitmap?.WritePixels(rect, picture.Bytes, picture.Width * 3, 0);
+			Buffor1Bitmap = new WriteableBitmap(picture.Convert<Bgr, byte>().ToBitmapSource());
 		}
 
 		private void SetBuffor2Bitmap(Image<Rgb, byte>? picture)
@@ -307,20 +304,15 @@ namespace VisibleConfusion.MVVM.ViewModel
 			if (picture?.Data == null)
 				return;
 
-			if (Buffor2Bitmap == null || Buffor2Bitmap.PixelWidth != picture.Width || Buffor2Bitmap.PixelHeight != picture.Height)
-				Buffor2Bitmap = new WriteableBitmap(picture.Width, picture.Height, 96, 96, PixelFormats.Rgb24, null);
-			var rect = new Int32Rect(0, 0, picture.Width, picture.Height);
-			Buffor2Bitmap?.WritePixels(rect, picture.Bytes, picture.Width * 3, 0);
+			Buffor2Bitmap = new WriteableBitmap(picture.Convert<Bgr, byte>().ToBitmapSource());
 		}
+
 		private void SetBuffor3Bitmap(Image<Rgb, byte>? picture)
 		{
 			if (picture?.Data == null)
 				return;
 
-			if (Buffor3Bitmap == null || Buffor3Bitmap.PixelWidth != picture.Width || Buffor3Bitmap.PixelHeight != picture.Height)
-				Buffor3Bitmap = new WriteableBitmap(picture.Width, picture.Height, 96, 96, PixelFormats.Rgb24, null);
-			var rect = new Int32Rect(0, 0, picture.Width, picture.Height);
-			Buffor3Bitmap?.WritePixels(rect, picture.Bytes, picture.Width * 3, 0);
+			Buffor3Bitmap = new WriteableBitmap(picture.Convert<Bgr, byte>().ToBitmapSource());
 		}
 
 		private void OnLeftPictureChanged(Image<Rgb, byte>? img)

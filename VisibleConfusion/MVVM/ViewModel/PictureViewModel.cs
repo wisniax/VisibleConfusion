@@ -159,7 +159,7 @@ namespace VisibleConfusion.MVVM.ViewModel
 				return;
 
 			// if (PictureBitmap == null || PictureBitmap.PixelWidth != picture.Width || PictureBitmap.PixelHeight != picture.Height || !Equals(_lastFrameType, picture.GetType()))
-			PictureBitmap = new WriteableBitmap(picture.ToBitmapSource());
+			PictureBitmap = new WriteableBitmap(picture.Convert<Bgr, byte>().ToBitmapSource());
 			// else
 			//PictureBitmap?.WritePixels(new Int32Rect(0, 0, picture.Width, picture.Height), picture.Bytes, picture.Width * 3, 0);
 		}
@@ -170,7 +170,7 @@ namespace VisibleConfusion.MVVM.ViewModel
 				return;
 
 			// if (GraphBitmap == null || GraphBitmap.PixelWidth != picture.Width || GraphBitmap.PixelHeight != picture.Height)
-			GraphBitmap = new WriteableBitmap(picture.ToBitmapSource());
+			GraphBitmap = new WriteableBitmap(picture.Convert<Bgr, byte>().ToBitmapSource());
 			// else
 			// 	GraphBitmap?.WritePixels(new Int32Rect(0, 0, picture.Width, picture.Height), picture.Bytes, picture.Width * 3, 0);
 		}
