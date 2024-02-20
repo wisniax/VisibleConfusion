@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -189,7 +190,7 @@ namespace VisibleConfusion.MVVM.Model
 			}
 		}
 
-		public Image<Rgb, byte>? DoFiltration(Int32[,] matrix)
+		public Image<Rgb, byte>? DoFiltration(Int32[,] matrix, FiltrationType filtrationType = FiltrationType.Custom)
 		{
 			if (!Images.ContainsKey(ViewPoint.LeftImage))
 				return null;
@@ -197,9 +198,16 @@ namespace VisibleConfusion.MVVM.Model
 			if (Images[ViewPoint.LeftImage] == null)
 				return null;
 
-			Int32 matrixSum = matrix.Cast<int>().Sum() == 0 ? 1 : matrix.Cast<int>().Sum();
+			if (matrix.Cast<Int32>().SequenceEqual(GetFiltrationValues(FiltrationType.Dilatation)?.Cast<Int32>()!))
+				return Images[ViewPoint.LeftImage]!.Copy().Dilate(1);
+
+			if (matrix.Cast<Int32>().SequenceEqual(GetFiltrationValues(FiltrationType.Erosion)?.Cast<Int32>()!))
+				return Images[ViewPoint.LeftImage]!.Copy().Erode(1);
 
 			var img = new Image<Rgb, byte>(Images[ViewPoint.LeftImage]?.Width - 2 ?? 1, Images[ViewPoint.LeftImage]?.Height - 2 ?? 1);
+
+			Int32 matrixSum = matrix.Cast<int>().Sum() == 0 ? 1 : matrix.Cast<int>().Sum();
+
 
 			for (int i = 1; i < img.Height; i++)
 			{
